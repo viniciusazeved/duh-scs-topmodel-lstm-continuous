@@ -1,0 +1,62 @@
+[
+  {
+    "model_name": "LSTM_DUH_Manning_Fixed",
+    "model_type": "lstm_duh_manning_fixed",
+    "n_params": 117889,
+    "config": {
+      "hidden_size": 64,
+      "num_layers": 2,
+      "dropout": 0.1,
+      "lr": 0.001,
+      "weight_decay": 1e-05,
+      "batch_size": 512,
+      "epochs": 150,
+      "patience": 25,
+      "grad_clip": 1.0,
+      "lookback": 240,
+      "horizon": 1
+    },
+    "test_metrics": {
+      "nse": 0.749613881111145,
+      "kge": 0.64460475429076,
+      "rmse": 11.086442947387695,
+      "pbias": -2.3667824268341064,
+      "r": 0.8993246081772656
+    },
+    "test_by_horizon": {
+      "1h": {
+        "nse": 0.749613881111145,
+        "kge": 0.64460475429076,
+        "rmse": 11.086442947387695,
+        "pbias": -2.3667824268341064,
+        "r": 0.8993246081772656
+      },
+      "3h": {
+        "nse": NaN,
+        "kge": NaN,
+        "rmse": NaN
+      },
+      "6h": {
+        "nse": NaN,
+        "kge": NaN,
+        "rmse": NaN
+      },
+      "12h": {
+        "nse": NaN,
+        "kge": NaN,
+        "rmse": NaN
+      },
+      "24h": {
+        "nse": NaN,
+        "kge": NaN,
+        "rmse": NaN
+      }
+    },
+    "learned_params": {
+      "tc_scale": 1.0,
+      "sigma": 3.0
+    },
+    "best_val_nse": 0.7524195313453674,
+    "epochs_trained": 35
+  }
+]

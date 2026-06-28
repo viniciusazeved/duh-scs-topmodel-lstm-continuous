@@ -1,0 +1,59 @@
+[
+  {
+    "model_name": "LSTM_Lumped_CalOnly",
+    "model_type": "lstm_lumped_calonly",
+    "n_params": 54913,
+    "config": {
+      "hidden_size": 64,
+      "num_layers": 2,
+      "dropout": 0.1,
+      "lr": 0.001,
+      "weight_decay": 1e-05,
+      "batch_size": 512,
+      "epochs": 150,
+      "patience": 25,
+      "grad_clip": 1.0,
+      "lookback": 240,
+      "horizon": 1
+    },
+    "test_metrics": {
+      "nse": 0.17067140340805054,
+      "kge": 0.3855510859281852,
+      "rmse": 20.176713943481445,
+      "pbias": 8.310747146606445,
+      "r": 0.48243859926178334
+    },
+    "test_by_horizon": {
+      "1h": {
+        "nse": 0.17067140340805054,
+        "kge": 0.3855510859281852,
+        "rmse": 20.176713943481445,
+        "pbias": 8.310747146606445,
+        "r": 0.48243859926178334
+      },
+      "3h": {
+        "nse": NaN,
+        "kge": NaN,
+        "rmse": NaN
+      },
+      "6h": {
+        "nse": NaN,
+        "kge": NaN,
+        "rmse": NaN
+      },
+      "12h": {
+        "nse": NaN,
+        "kge": NaN,
+        "rmse": NaN
+      },
+      "24h": {
+        "nse": NaN,
+        "kge": NaN,
+        "rmse": NaN
+      }
+    },
+    "learned_params": {},
+    "best_val_nse": 0.2952754497528076,
+    "epochs_trained": 59
+  }
+]

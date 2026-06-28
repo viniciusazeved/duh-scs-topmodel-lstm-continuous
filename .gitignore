@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+.venv/
+venv/
+.uv/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Heavy artifacts archived on Zenodo (NOT in git):
+# per-run model weights (best_model.pt) are large and live on the Zenodo
+# deposit linked in the README. The repository keeps the lightweight
+# results.json, the consolidated tables, and the per-run predictions.npz
+# that are needed to rebuild the figures.
+outputs/**/*.pt
+outputs/**/*.pth
+
+# Scratch
+*.err

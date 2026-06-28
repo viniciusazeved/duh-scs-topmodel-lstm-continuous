@@ -1,0 +1,42 @@
+cff-version: 1.2.0
+message: "If you use this software or data, please cite both the article and the archived repository."
+title: "DUH-SCS-TOPMODEL-LSTM (Continuous Simulation): a differentiable hybrid rainfall-runoff model for hourly continuous streamflow simulation"
+abstract: >-
+  Source code, processed dataset and per-run results for a multi-seed nested-baseline
+  ablation (13 configurations x 10 seeds) evaluating where and how embedded physics helps a
+  differentiable rainfall-runoff model in hourly continuous simulation in the Preto River
+  catchment (Manuel Duarte, ANA 58585000), Brazilian Atlantic Forest.
+type: software
+authors:
+  - family-names: Azevedo
+    given-names: Vinicius
+    orcid: "https://orcid.org/0009-0009-9008-4095"
+    affiliation: "School of Civil Engineering, Architecture and Urban Design (FECFAU), University of Campinas (UNICAMP)"
+    email: contato@azevedoambiental.com
+  - family-names: Fagundes
+    given-names: Hugo de Oliveira
+    orcid: "https://orcid.org/0000-0003-2121-3059"
+    affiliation: "School of Civil Engineering, Architecture and Urban Design (FECFAU), University of Campinas (UNICAMP)"
+version: 1.0.0
+license: MIT
+repository-code: "https://github.com/viniciusazeved/duh-scs-topmodel-lstm-continuous"
+keywords:
+  - hybrid hydrological modeling
+  - differentiable physics
+  - LSTM
+  - continuous rainfall-runoff simulation
+  - distributed unit hydrograph
+  - multi-seed ablation
+preferred-citation:
+  type: article
+  title: "Where and how does embedded physics help a neural streamflow simulator? A differentiable routing-and-runoff model coupled to an LSTM, tested by multi-seed ablation in continuous simulation"
+  authors:
+    - family-names: Azevedo
+      given-names: Vinicius
+      orcid: "https://orcid.org/0009-0009-9008-4095"
+    - family-names: Fagundes
+      given-names: Hugo de Oliveira
+      orcid: "https://orcid.org/0000-0003-2121-3059"
+  journal: "Journal of Hydrology"
+  year: 2026
+  notes: "Manuscript in preparation."

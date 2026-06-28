@@ -1,0 +1,17 @@
+
+##### PRODUTO=telem | device=cuda | janelas: train=27292 val=5998 test=6323
+=== produto=telem backbone=dlinear (~1k params) ===
+  A: SO CHUVA AGREGADA (1 canal): @1h=0.032±0.013  (@1h=0.032 @24h=nan)
+    PERSEED chuva @1h: 0=0.0128,1=0.0494,2=0.0345,3=0.0242,4=0.0386
+  C: SO FEATURE TEMPORAL, SEM CHUVA (2 canais): @1h=0.028±0.184  (@1h=0.028 @24h=nan)
+    PERSEED tempo @1h: 0=0.1868,1=0.1203,2=-0.0888,3=0.1983,4=-0.2754
+  B: CHUVA+HORA/MES (3 canais): @1h=0.524±0.041  (@1h=0.524 @24h=nan)
+    PERSEED ambos @1h: 0=0.5410,1=0.5421,2=0.5221,3=0.4473,4=0.5691
+=== produto=telem backbone=mlp (~109k params) ===
+  A: SO CHUVA AGREGADA (1 canal): @1h=-0.174±0.098  (@1h=-0.174 @24h=nan)
+    PERSEED chuva @1h: 0=-0.3407,1=-0.1327,2=-0.1117,3=-0.0631,4=-0.2219
+  C: SO FEATURE TEMPORAL, SEM CHUVA (2 canais): @1h=0.193±0.092  (@1h=0.193 @24h=nan)
+    PERSEED tempo @1h: 0=0.0313,1=0.1667,2=0.2118,3=0.3015,4=0.2524
+  B: CHUVA+HORA/MES (3 canais): @1h=0.557±0.042  (@1h=0.557 @24h=nan)
+    PERSEED ambos @1h: 0=0.6045,1=0.5022,2=0.5315,3=0.6082,4=0.5364
+=== produto=telem backbone=tcn (~93k params) ===

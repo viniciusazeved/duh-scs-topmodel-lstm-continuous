@@ -1,0 +1,66 @@
+[
+  {
+    "model_name": "Phys_DUH_Base_Topmodel",
+    "model_type": "phys_duh_base_topmodel",
+    "n_params": 7,
+    "config": {
+      "hidden_size": 64,
+      "num_layers": 2,
+      "dropout": 0.1,
+      "lr": 0.001,
+      "weight_decay": 1e-05,
+      "batch_size": 512,
+      "epochs": 150,
+      "patience": 25,
+      "grad_clip": 1.0,
+      "lookback": 240,
+      "horizon": 1
+    },
+    "test_metrics": {
+      "nse": -0.40443170070648193,
+      "kge": 0.3803466008418177,
+      "rmse": 26.256534576416016,
+      "pbias": 1.8587547540664673,
+      "r": 0.3986930766530299
+    },
+    "test_by_horizon": {
+      "1h": {
+        "nse": -0.40443170070648193,
+        "kge": 0.3803466008418177,
+        "rmse": 26.256534576416016,
+        "pbias": 1.8587547540664673,
+        "r": 0.3986930766530299
+      },
+      "3h": {
+        "nse": NaN,
+        "kge": NaN,
+        "rmse": NaN
+      },
+      "6h": {
+        "nse": NaN,
+        "kge": NaN,
+        "rmse": NaN
+      },
+      "12h": {
+        "nse": NaN,
+        "kge": NaN,
+        "rmse": NaN
+      },
+      "24h": {
+        "nse": NaN,
+        "kge": NaN,
+        "rmse": NaN
+      }
+    },
+    "learned_params": {
+      "tc_scale": 3.3308372497558594,
+      "sigma": 14.9649658203125,
+      "baseflow_m3s": 25.953699111938477,
+      "topmodel_m": 79.15850830078125,
+      "topmodel_T_0": 0.49854663014411926,
+      "topmodel_sigmoid_temp": 0.9788457155227661
+    },
+    "best_val_nse": -1.2994678020477295,
+    "epochs_trained": 79
+  }
+]

@@ -1,0 +1,57 @@
+{
+  "model_name": "LSTM_Lumped",
+  "model_type": "lstm_lumped_wmean",
+  "n_params": 55169,
+  "config": {
+    "hidden_size": 64,
+    "num_layers": 2,
+    "dropout": 0.1,
+    "lr": 0.001,
+    "weight_decay": 1e-05,
+    "batch_size": 512,
+    "epochs": 150,
+    "patience": 25,
+    "grad_clip": 1.0,
+    "lookback": 240,
+    "horizon": 1
+  },
+  "test_metrics": {
+    "nse": 0.7381634712219238,
+    "kge": 0.787334705772097,
+    "rmse": 11.337104797363281,
+    "pbias": 6.511058330535889,
+    "r": 0.8676903564118148
+  },
+  "test_by_horizon": {
+    "1h": {
+      "nse": 0.7381634712219238,
+      "kge": 0.787334705772097,
+      "rmse": 11.337104797363281,
+      "pbias": 6.511058330535889,
+      "r": 0.8676903564118148
+    },
+    "3h": {
+      "nse": NaN,
+      "kge": NaN,
+      "rmse": NaN
+    },
+    "6h": {
+      "nse": NaN,
+      "kge": NaN,
+      "rmse": NaN
+    },
+    "12h": {
+      "nse": NaN,
+      "kge": NaN,
+      "rmse": NaN
+    },
+    "24h": {
+      "nse": NaN,
+      "kge": NaN,
+      "rmse": NaN
+    }
+  },
+  "learned_params": {},
+  "best_val_nse": 0.7829394936561584,
+  "epochs_trained": 92
+}

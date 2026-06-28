@@ -1,0 +1,3 @@
+
+##### PRODUTO=telem | device=cuda | janelas: train=27292 val=5998 test=6323
+=== produto=telem backbone=lstm (~55k params) ===

@@ -1,0 +1,60 @@
+{
+  "model_name": "LSTM_DUH_Base_Fixed",
+  "model_type": "lstm_duh_base_fixed",
+  "n_params": 117889,
+  "config": {
+    "hidden_size": 64,
+    "num_layers": 2,
+    "dropout": 0.1,
+    "lr": 0.001,
+    "weight_decay": 1e-05,
+    "batch_size": 512,
+    "epochs": 150,
+    "patience": 25,
+    "grad_clip": 1.0,
+    "lookback": 240,
+    "horizon": 1
+  },
+  "test_metrics": {
+    "nse": 0.7125898599624634,
+    "kge": 0.724237466965187,
+    "rmse": 11.877857208251953,
+    "pbias": 6.428793430328369,
+    "r": 0.856374831663993
+  },
+  "test_by_horizon": {
+    "1h": {
+      "nse": 0.7125898599624634,
+      "kge": 0.724237466965187,
+      "rmse": 11.877857208251953,
+      "pbias": 6.428793430328369,
+      "r": 0.856374831663993
+    },
+    "3h": {
+      "nse": NaN,
+      "kge": NaN,
+      "rmse": NaN
+    },
+    "6h": {
+      "nse": NaN,
+      "kge": NaN,
+      "rmse": NaN
+    },
+    "12h": {
+      "nse": NaN,
+      "kge": NaN,
+      "rmse": NaN
+    },
+    "24h": {
+      "nse": NaN,
+      "kge": NaN,
+      "rmse": NaN
+    }
+  },
+  "learned_params": {
+    "tc_scale": 1.0,
+    "sigma": 3.0
+  },
+  "best_val_nse": 0.7665139436721802,
+  "epochs_trained": 32
+}

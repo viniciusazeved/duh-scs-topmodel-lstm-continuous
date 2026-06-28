@@ -1,0 +1,59 @@
+[
+  {
+    "model_name": "LSTM_PET",
+    "model_type": "lstm_pet",
+    "n_params": 117889,
+    "config": {
+      "hidden_size": 64,
+      "num_layers": 2,
+      "dropout": 0.1,
+      "lr": 0.001,
+      "weight_decay": 1e-05,
+      "batch_size": 512,
+      "epochs": 150,
+      "patience": 25,
+      "grad_clip": 1.0,
+      "lookback": 240,
+      "horizon": 1
+    },
+    "test_metrics": {
+      "nse": 0.8247983455657959,
+      "kge": 0.8730789872281947,
+      "rmse": 9.273767471313477,
+      "pbias": 4.364468574523926,
+      "r": 0.9117474861297299
+    },
+    "test_by_horizon": {
+      "1h": {
+        "nse": 0.8247983455657959,
+        "kge": 0.8730789872281947,
+        "rmse": 9.273767471313477,
+        "pbias": 4.364468574523926,
+        "r": 0.9117474861297299
+      },
+      "3h": {
+        "nse": NaN,
+        "kge": NaN,
+        "rmse": NaN
+      },
+      "6h": {
+        "nse": NaN,
+        "kge": NaN,
+        "rmse": NaN
+      },
+      "12h": {
+        "nse": NaN,
+        "kge": NaN,
+        "rmse": NaN
+      },
+      "24h": {
+        "nse": NaN,
+        "kge": NaN,
+        "rmse": NaN
+      }
+    },
+    "learned_params": {},
+    "best_val_nse": 0.7836229801177979,
+    "epochs_trained": 95
+  }
+]

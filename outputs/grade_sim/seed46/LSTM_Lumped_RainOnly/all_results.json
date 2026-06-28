@@ -1,0 +1,59 @@
+[
+  {
+    "model_name": "LSTM_Lumped_RainOnly",
+    "model_type": "lstm_lumped_rainonly",
+    "n_params": 54657,
+    "config": {
+      "hidden_size": 64,
+      "num_layers": 2,
+      "dropout": 0.1,
+      "lr": 0.001,
+      "weight_decay": 1e-05,
+      "batch_size": 512,
+      "epochs": 150,
+      "patience": 25,
+      "grad_clip": 1.0,
+      "lookback": 240,
+      "horizon": 1
+    },
+    "test_metrics": {
+      "nse": -0.16602230072021484,
+      "kge": 0.3520177036106762,
+      "rmse": 23.92436981201172,
+      "pbias": 23.72758674621582,
+      "r": 0.42448774740934153
+    },
+    "test_by_horizon": {
+      "1h": {
+        "nse": -0.16602230072021484,
+        "kge": 0.3520177036106762,
+        "rmse": 23.92436981201172,
+        "pbias": 23.72758674621582,
+        "r": 0.42448774740934153
+      },
+      "3h": {
+        "nse": NaN,
+        "kge": NaN,
+        "rmse": NaN
+      },
+      "6h": {
+        "nse": NaN,
+        "kge": NaN,
+        "rmse": NaN
+      },
+      "12h": {
+        "nse": NaN,
+        "kge": NaN,
+        "rmse": NaN
+      },
+      "24h": {
+        "nse": NaN,
+        "kge": NaN,
+        "rmse": NaN
+      }
+    },
+    "learned_params": {},
+    "best_val_nse": 0.5081900358200073,
+    "epochs_trained": 70
+  }
+]

@@ -1,0 +1,59 @@
+[
+  {
+    "model_name": "LSTM",
+    "model_type": "lstm",
+    "n_params": 117633,
+    "config": {
+      "hidden_size": 64,
+      "num_layers": 2,
+      "dropout": 0.1,
+      "lr": 0.001,
+      "weight_decay": 1e-05,
+      "batch_size": 512,
+      "epochs": 150,
+      "patience": 25,
+      "grad_clip": 1.0,
+      "lookback": 240,
+      "horizon": 1
+    },
+    "test_metrics": {
+      "nse": 0.7292888164520264,
+      "kge": 0.674018031934837,
+      "rmse": 11.527633666992188,
+      "pbias": -10.887527465820312,
+      "r": 0.8965338040199855
+    },
+    "test_by_horizon": {
+      "1h": {
+        "nse": 0.7292888164520264,
+        "kge": 0.674018031934837,
+        "rmse": 11.527633666992188,
+        "pbias": -10.887527465820312,
+        "r": 0.8965338040199855
+      },
+      "3h": {
+        "nse": NaN,
+        "kge": NaN,
+        "rmse": NaN
+      },
+      "6h": {
+        "nse": NaN,
+        "kge": NaN,
+        "rmse": NaN
+      },
+      "12h": {
+        "nse": NaN,
+        "kge": NaN,
+        "rmse": NaN
+      },
+      "24h": {
+        "nse": NaN,
+        "kge": NaN,
+        "rmse": NaN
+      }
+    },
+    "learned_params": {},
+    "best_val_nse": 0.7225870490074158,
+    "epochs_trained": 39
+  }
+]

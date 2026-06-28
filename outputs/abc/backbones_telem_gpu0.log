@@ -1,0 +1,7 @@
+
+##### PRODUTO=telem | device=cuda | janelas: train=27292 val=5998 test=6323
+=== produto=telem backbone=lstm (~55k params) ===
+  A: SO CHUVA AGREGADA (1 canal): @1h=-0.060±0.108  (@1h=-0.060 @24h=nan)
+    PERSEED chuva @1h: 0=-0.1818,1=0.0250,2=-0.2009,3=0.0348,4=0.0239
+  C: SO FEATURE TEMPORAL, SEM CHUVA (2 canais): @1h=0.146±0.089  (@1h=0.146 @24h=nan)
+    PERSEED tempo @1h: 0=-0.0199,1=0.1670,2=0.1699,3=0.2488,4=0.1633

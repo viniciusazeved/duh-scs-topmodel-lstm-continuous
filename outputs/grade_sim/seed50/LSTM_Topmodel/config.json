@@ -1,0 +1,20 @@
+{
+  "config": {
+    "hidden_size": 64,
+    "num_layers": 2,
+    "dropout": 0.1,
+    "lr": 0.001,
+    "weight_decay": 1e-05,
+    "batch_size": 512,
+    "epochs": 150,
+    "patience": 25,
+    "grad_clip": 1.0,
+    "lookback": 240,
+    "horizon": 1
+  },
+  "model_types": [
+    "lstm_topmodel"
+  ],
+  "timestamp": "20260622_074140",
+  "seed": 50
+}

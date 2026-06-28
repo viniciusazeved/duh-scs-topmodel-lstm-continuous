@@ -1,0 +1,66 @@
+[
+  {
+    "model_name": "LSTM_DUH_Base_Topmodel",
+    "model_type": "lstm_duh_base_topmodel",
+    "n_params": 118151,
+    "config": {
+      "hidden_size": 64,
+      "num_layers": 2,
+      "dropout": 0.1,
+      "lr": 0.001,
+      "weight_decay": 1e-05,
+      "batch_size": 512,
+      "epochs": 150,
+      "patience": 25,
+      "grad_clip": 1.0,
+      "lookback": 240,
+      "horizon": 1
+    },
+    "test_metrics": {
+      "nse": 0.6566982865333557,
+      "kge": 0.797839031154227,
+      "rmse": 12.981505393981934,
+      "pbias": -2.9254209995269775,
+      "r": 0.8181141642929867
+    },
+    "test_by_horizon": {
+      "1h": {
+        "nse": 0.6566982865333557,
+        "kge": 0.797839031154227,
+        "rmse": 12.981505393981934,
+        "pbias": -2.9254209995269775,
+        "r": 0.8181141642929867
+      },
+      "3h": {
+        "nse": NaN,
+        "kge": NaN,
+        "rmse": NaN
+      },
+      "6h": {
+        "nse": NaN,
+        "kge": NaN,
+        "rmse": NaN
+      },
+      "12h": {
+        "nse": NaN,
+        "kge": NaN,
+        "rmse": NaN
+      },
+      "24h": {
+        "nse": NaN,
+        "kge": NaN,
+        "rmse": NaN
+      }
+    },
+    "learned_params": {
+      "topmodel_m": 28.33782196044922,
+      "topmodel_T_0": 0.13494570553302765,
+      "topmodel_sigmoid_temp": 10.649370193481445,
+      "topmodel_S_bar_init_fixed": 70.0,
+      "tc_scale": 1.6917304992675781,
+      "sigma": 4.865778923034668
+    },
+    "best_val_nse": 0.7721104025840759,
+    "epochs_trained": 46
+  }
+]
