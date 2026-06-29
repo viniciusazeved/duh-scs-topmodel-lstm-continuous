@@ -1,5 +1,6 @@
 # DUH-SCS-TOPMODEL-LSTM — Continuous Simulation
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21016683.svg)](https://doi.org/10.5281/zenodo.21016683)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 A differentiable hybrid rainfall–runoff model for **hourly continuous simulation**: a
@@ -150,7 +151,7 @@ Temporal split (70/15/15): train 2021-01-01 → 2024-06, val → 2025-03, test �
 The processed dataset and the lightweight results are in this repository; the per-run model weights
 are archived on Zenodo:
 
-> **Zenodo DOI:** [to be inserted upon acceptance]
+> **Zenodo DOI:** [10.5281/zenodo.21016683](https://doi.org/10.5281/zenodo.21016683)
 
 The gridded precipitation products used in the ABC experiment (MERGE, ERA5-Land, IMERG, MSWEP) and
 the underlying raw data are publicly available from their original providers: streamflow telemetry
