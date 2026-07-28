@@ -15,9 +15,9 @@ ANA gauge 58585000, ~3,117 km², Brazilian Atlantic Forest).
 
 This repository accompanies the article *"Where and how does embedded physics help a neural
 streamflow simulator? A differentiable routing-and-runoff model coupled to an LSTM, tested by
-multi-seed ablation in continuous simulation"* (Azevedo & Fagundes, *Journal of Hydrology*,
+multi-seed ablation in continuous simulation"* (Azevedo, Oliveira & Fagundes, *Journal of Hydrology*,
 manuscript in preparation). It is the continuous-simulation companion of the forecasting package
-[`duh-scs-topmodel-lstm`](https://github.com/viniciusazeved/duh-scs-topmodel-lstm).
+[`duh-scs-topmodel-lstm-forecasting-ar`](https://github.com/viniciusazeved/duh-scs-topmodel-lstm-forecasting-ar).
 
 ## What is in the study
 
@@ -165,4 +165,4 @@ See [`CITATION.cff`](CITATION.cff). Please cite both the article and this archiv
 
 ## License
 
-[MIT](LICENSE) © 2026 Vinicius Azevedo, Hugo de Oliveira Fagundes.
+[MIT](LICENSE) © 2026 Vinicius Azevedo, Paulo Tarso S. Oliveira, Hugo de Oliveira Fagundes.
