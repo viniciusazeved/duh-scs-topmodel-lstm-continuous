@@ -39,6 +39,9 @@ identifiers:
   - type: doi
     value: 10.5281/zenodo.21016683
     description: "Version 1.0.0"
+  - type: doi
+    value: 10.5281/zenodo.23404030
+    description: "Version 1.1.0"
 license: MIT
 repository-code: "https://github.com/viniciusazeved/duh-scs-topmodel-lstm-continuous"
 keywords:
