@@ -98,13 +98,13 @@ environment/frozen_env_2026-09-29.txt          packages of the environment that 
 ## Installation
 
 ```bash
-uv sync                                    # versions of uv.lock = environment of the runs (Python 3.13)
+uv sync --extra gis      # versions of uv.lock = environment of the runs (Python 3.13); gis: Figures 1 and S2
 uv pip install torch==2.6.0 --index-url https://download.pytorch.org/whl/cu124   # or .../whl/cpu
-uv sync --extra gis                        # only for Figures 1 and S2 (geopandas, rasterio)
 ```
 
-PyTorch is not listed in `pyproject.toml` because the build depends on the CUDA setup; the runs
-used torch 2.6.0+cu124 on NVIDIA RTX 2000 Ada and RTX 3000 Ada GPUs. Training results are
+PyTorch is not listed in `pyproject.toml` because the build depends on the CUDA setup. Install it
+after `uv sync`, which removes the packages that are not in `uv.lock` (`uv run` keeps them). The
+runs used torch 2.6.0+cu124 on NVIDIA RTX 2000 Ada and RTX 3000 Ada GPUs. Training results are
 reproducible on the same card, not bitwise across cards (Supplementary Section S8).
 
 ## Reproducing the manuscript

@@ -31,7 +31,7 @@ below, or give their paths by argument or environment variable:
 | Folder of the three layers | `data/gis/external/` | `--layers-dir` | `FIG1_LAYERS_DIR` |
 
 ```bash
-uv sync --extra gis
+uv sync --extra gis      # before installing torch: uv sync removes it (README at the root)
 uv run python scripts/figures/mapa_localizacao.py --layers-dir /path/to/layers
 ```
 
