@@ -87,7 +87,8 @@ data/
   gis/                                         sub-catchments, catchment outline, Natural Earth (see its README)
   gr4h/serie_horaria_gr4h.csv                  lumped GR4H input
 outputs/
-  grade_sim/seedNN/<configuration>/            results.json, predictions.npz, best_model.pt, config.json, summary.csv
+  grade_sim/seedNN/<configuration>/            config.json, summary.csv, all_results.json, .done
+  grade_sim/seedNN/<configuration>/<model>/    results.json, predictions.npz, best_model.pt
   abc/                     logs of the preparatory sweeps
   gr4h/                    GR4H simulations, parameters and common-mask evaluation
   analysis/                validation panel (Table S4)
@@ -130,12 +131,13 @@ uv run python scripts/figures/mapa_localizacao.py    # Figure 1 (public layers: 
 ```
 
 Each analysis script prints the unrounded values, the values rounded to the precision of the
-manuscript and a comparison with the printed numbers (options: `--help`). Figures are written to
-`outputs/figures` and tables to `outputs/tables`. With the locked environment and the Times New
-Roman font, the PNG files of Figures 3 to 7, S1 and S3 to S5 are byte-identical to those of the
-submitted manuscript (checked on Windows 11), and so are Figure 1, with the authors' copies of the
-public layers, and Figure S2, with the MSWEP file. The PDF versions have the same content, with the
-embedded fonts in an order that depends on where matplotlib is installed.
+manuscript and a comparison with the printed numbers (options: `--help`). Files go to
+`outputs/tables`: the CSV of the `--csv` option, the JSON of the validation panel and the Markdown
+of Tables S5 and S6. Figures are written to `outputs/figures`. With the locked environment and the Times New Roman font, the PNG
+files of Figures 3 to 7, S1 and S3 to S5 are byte-identical to those of the submitted manuscript
+(checked on Windows 11), and so are Figure 1, with the authors' copies of the public layers, and
+Figure S2, with the MSWEP file. The PDF versions have the same content, with the embedded fonts in
+an order that depends on where matplotlib is installed.
 
 GR4H benchmark (R with the airGR package; the shipped simulations were made with R 4.6.1 and
 airGR 1.7.8):
@@ -236,8 +238,9 @@ for 8 and 7 sub-catchments smaller than a pixel).
 
 MSWEP V3.16 is distributed by GloH2O under CC BY-NC 4.0, with terms that restrict redistribution,
 so `dataset_58585000_mswep.h5` is not included. `scripts/data_prep/products/montar_dataset_mswep_area.py`
-rebuilds it from the MSWEP files obtained from GloH2O. Without it, the MSWEP row of Table S6, its
-bar in Figure S1 and its panel in Figure S2 cannot be regenerated.
+rebuilds it from the MSWEP files obtained from GloH2O. Without it, the MSWEP runs of the sweep
+cannot be retrained and its panel in Figure S2 is replaced by a note; the MSWEP row of Table S6
+and its bar in Figure S1 are drawn from the logs in `outputs/abc/`.
 
 ## Notes on reproducibility
 
@@ -262,12 +265,12 @@ Copernicus WorldDEM-30; MapBiomas; CPTEC/INPE MERGE; NASA IMERG; Natural Earth).
 
 ## Citation
 
-Cite the version you used with its version DOI, shown on its Zenodo page; the concept DOI
-10.5281/zenodo.21016682 covers all versions. For example:
+Cite the version you used with its version DOI, shown on its Zenodo page, or the concept DOI,
+which covers all versions and resolves to the latest one:
 
 > Azevedo, V., Oliveira, P. T. S., & Fagundes, H. O. (2026). DUH-SCS-TOPMODEL-LSTM (Continuous
 > Simulation): a differentiable hybrid rainfall-runoff model for hourly continuous streamflow
-> simulation (v1.1.0) [Software]. Zenodo. https://doi.org/10.5281/zenodo.21016682
+> simulation [Software]. Zenodo. https://doi.org/10.5281/zenodo.21016682
 
 and the article once published. Machine-readable metadata: [CITATION.cff](CITATION.cff).
 
