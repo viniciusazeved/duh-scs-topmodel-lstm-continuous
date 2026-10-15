@@ -1,6 +1,7 @@
 # Licence of the data and model weights
 
-The code in this repository (`src/`, `scripts/`) is released under the MIT License (LICENSE).
+The code in this repository (`src/`, `scripts/`) is released under the MIT License
+([LICENSE](LICENSE)).
 
 The processed datasets (`data/`), the trained model weights (`outputs/grade_sim/**/best_model.pt`),
 the per-run results and the logs (`outputs/`) are released under the Creative Commons Attribution
@@ -37,6 +38,6 @@ authors. Keep these attributions when redistributing.
 
 Figure 1 also reads public layers that are not redistributed here (the ANADEM terrain model, the
 BHO 2017 5k drainage network of ANA and the IBGE 2025 state boundaries); their sources and terms
-of use are listed in `data/gis/README.md`.
+of use are listed in [data/gis/README.md](data/gis/README.md#public-layers-not-included-figure-1).
 
 MSWEP V3.16 (GloH2O) is licensed CC BY-NC 4.0 and is not redistributed in this repository.

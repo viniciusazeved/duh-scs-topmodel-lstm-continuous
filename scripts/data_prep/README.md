@@ -2,10 +2,12 @@
 
 The scripts in this folder are copies of the code that built the processed datasets in `data/`,
 kept as they were run, including the absolute paths of the authors' machine. They document how
-each file was produced; they are not meant to run unchanged. Rebuilding the chain requires
-credentials and raw data that this package does not redistribute (an ANA HidroWebService account,
-a Google Earth Engine project with export to Google Drive, access to MSWEP through GloH2O, and
-roughly 160 GiB of raw gridded products) and three manual GIS steps, listed at the end.
+each file was produced; they are not meant to run unchanged.
+
+Rebuilding the chain requires credentials and raw data that this package does not redistribute
+(an ANA HidroWebService account, a Google Earth Engine project with export to Google Drive, access
+to MSWEP through GloH2O, and roughly 160 GiB of raw gridded products) and three manual GIS steps,
+[listed at the end](#manual-gis-steps-arcgis-pro).
 
 ## Chain
 
@@ -52,7 +54,7 @@ roughly 160 GiB of raw gridded products) and three manual GIS steps, listed at t
      with the centroid value for sub-catchments smaller than a pixel) and
      `montar_dataset_precip.py`.
    - MSWEP: `montar_dataset_mswep_area.py`, from the files obtained from GloH2O. The resulting
-     file is not redistributed (see the main README).
+     file is not redistributed (see the [main README](../../README.md#datasets)).
 7. Topographic wetness index (`twi/`; output `data/processed/twi_attrs.npz`).
    - `flow_paths.py`: WhiteboxTools processing of the DEM (fill, D8 flow directions, slope and
      flow accumulation).

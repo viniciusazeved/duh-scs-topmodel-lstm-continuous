@@ -5,7 +5,8 @@
 The manuscript "Understanding the role of physics in differentiable hydrological models for hourly
 streamflow prediction" was submitted to the Journal of Hydrology on 13 October 2026.
 
-Added
+### Added
+
 - Model weights (`best_model.pt`) of the 172 completed runs. Version 1.0.0 stated that they were
   archived on Zenodo, which was not the case.
 - Processed per-sub-catchment MERGE, ERA5-Land and IMERG datasets used in the rainfall-product
@@ -23,8 +24,9 @@ Added
 - `LICENSE-DATA.md` (CC BY 4.0 for data and weights, with third-party attributions) and
   `.zenodo.json`.
 
-Changed
-- README and CITATION.cff: title and status of the manuscript, concept DOI, table and figure
+### Changed
+
+- `README.md` and `CITATION.cff`: title and status of the manuscript, concept DOI, table and figure
   numbers of the submitted version, metrics with two decimals as in the manuscript, run commands
   (150 epochs and patience 25 instead of 100 and 20), dataset description.
 - Runners: defaults set to the protocol of the manuscript; new `--out` option; the smoke test writes
@@ -36,6 +38,7 @@ Changed
   ran the grid (Python 3.12 or later; optional `gis` extra for Figures 1 and S2); `uv.lock`
   regenerated.
 
-Unchanged
+### Unchanged
+
 - Model code (`src/`), `scripts/train.py`, the processed telemetric dataset, the TWI file and all
   per-run results of v1.0.0.

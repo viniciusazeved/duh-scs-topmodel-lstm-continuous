@@ -16,6 +16,11 @@ each release also has its own version DOI on Zenodo. Changes since v1.0.0 are li
 [CHANGELOG.md](CHANGELOG.md). The forecasting study has a companion package,
 [`duh-scs-topmodel-lstm-forecasting-ar`](https://github.com/viniciusazeved/duh-scs-topmodel-lstm-forecasting-ar).
 
+Contents: [installation](#installation), [reproducing the manuscript](#reproducing-the-manuscript),
+[artefact map](#artefact-map), [datasets](#datasets),
+[data provenance](scripts/data_prep/README.md), [GIS layers](data/gis/README.md),
+[licences](#licences), [citation](#citation).
+
 ## Model and study design
 
 A differentiable hybrid rainfall-runoff model for hourly continuous simulation: a distributed unit
@@ -84,7 +89,7 @@ data/
   dataset_58585000_{merge,era5land,imerg}.h5   gridded products (preparatory sweep only)
   processed/twi_attrs.npz                      TWI histograms of the TOPMODEL layer
   gauges/                                      27 telemetric rain gauges: metadata and hourly series
-  gis/                                         sub-catchments, catchment outline, Natural Earth (see its README)
+  gis/                                         sub-catchments, outline, Natural Earth (its README)
   gr4h/serie_horaria_gr4h.csv                  lumped GR4H input
 outputs/
   grade_sim/seedNN/<configuration>/            config.json, summary.csv, all_results.json, .done
@@ -99,7 +104,7 @@ environment/frozen_env_2026-09-29.txt          packages of the environment that 
 ## Installation
 
 ```bash
-uv sync --extra gis      # versions of uv.lock = environment of the runs (Python 3.13); gis: Figures 1 and S2
+uv sync --extra gis      # environment of the runs (uv.lock, Python 3.13); gis: Figures 1 and S2
 uv pip install torch==2.6.0 --index-url https://download.pytorch.org/whl/cu124   # or .../whl/cpu
 ```
 
@@ -110,52 +115,57 @@ reproducible on the same card, not bitwise across cards (Supplementary Section S
 
 ## Reproducing the manuscript
 
-From the shipped results, without training:
+### From the shipped results, without training
 
 ```bash
 uv run python scripts/analysis/table3.py             # Table 3
 uv run python scripts/analysis/contrasts.py          # paired tests, Sections 4.2 to 4.4 and S2
 uv run python scripts/analysis/spread_tests.py       # seed-to-seed spread, Section 4.3
-uv run python scripts/analysis/flv_signatures.py     # FLV and Yilmaz signatures, Section S11, Table S7
+uv run python scripts/analysis/flv_signatures.py     # FLV and Yilmaz signatures, Table S7
 uv run python scripts/analysis/learned_params.py     # learned parameters, Sections 4.5 and 5.3
 uv run python scripts/analysis/test_period.py        # test-period diagnostics, Section 5.1
 uv run python scripts/analysis/table_s3.py           # Table S3
-uv run python scripts/analysis/validation_panel.py   # Table S4; reloads 30 checkpoints (about 40 min on a CPU)
+uv run python scripts/analysis/validation_panel.py   # Table S4 (about 40 min on a CPU)
 uv run python scripts/figures/tabela_abc.py          # Tables S5 and S6, from the sweep logs
 uv run python scripts/figures/gerar_figuras_sim.py   # Figures 4 to 7 and S3 to S5
 uv run python scripts/figures/fig_arquitetura_sim.py # Figure 3
 uv run python scripts/figures/fig_abc.py             # Figure S1
-uv run python scripts/figures/fig_produtos_evento.py # Figure S2 (the MSWEP panel needs the MSWEP file)
+uv run python scripts/figures/fig_produtos_evento.py # Figure S2 (MSWEP panel: see Datasets)
 uv run python scripts/figures/fig_serie_vazao.py     # Figure 2
 uv run python scripts/figures/mapa_localizacao.py    # Figure 1 (public layers: data/gis/README.md)
 ```
 
 Each analysis script prints the unrounded values, the values rounded to the precision of the
-manuscript and a comparison with the printed numbers (options: `--help`). Files go to
-`outputs/tables`: the CSV of the `--csv` option, the JSON of the validation panel and the Markdown
-of Tables S5 and S6. Figures are written to `outputs/figures`. With the locked environment and the Times New Roman font, the PNG
-files of Figures 3 to 7, S1 and S3 to S5 are byte-identical to those of the submitted manuscript
-(checked on Windows 11), and so are Figure 1, with the authors' copies of the public layers, and
-Figure S2, with the MSWEP file. The PDF versions have the same content, with the embedded fonts in
-an order that depends on where matplotlib is installed.
+manuscript and a comparison with the printed numbers (options: `--help`); the validation panel
+reloads the 30 checkpoints of Table S4. Files go to `outputs/tables` (the CSV of the `--csv`
+option, the JSON of the validation panel and the Markdown of Tables S5 and S6) and figures to
+`outputs/figures`. With the locked environment and the Times New Roman font, the PNG files of
+Figures 3 to 7, S1 and S3 to S5 are byte-identical to those of the submitted manuscript (checked on
+Windows 11), and so are Figure 1, with the authors' copies of the public layers, and Figure S2,
+with the MSWEP file. The PDF versions have the same content, with the embedded fonts in an order
+that depends on where matplotlib is installed.
 
-GR4H benchmark (R with the airGR package; the shipped simulations were made with R 4.6.1 and
-airGR 1.7.8):
+### GR4H benchmark
+
+Requires R with the airGR package; the shipped simulations were made with R 4.6.1 and airGR 1.7.8.
 
 ```bash
-uv run python scripts/gr4h/make_gr4h_input.py          # rebuilds the GR4H input from the h5 and checks it
-uv run python scripts/gr4h/audit_gr4h_common_mask.py   # scores the shipped simulations on the 6,323 timestamps
-Rscript scripts/gr4h/run_gr4h_airgr.R                  # recalibration on NSE, written to outputs/retrain/gr4h
-Rscript scripts/gr4h/run_gr4h_airgr_kge.R              # recalibration on KGE, same folder
-uv run python scripts/gr4h/audit_gr4h_common_mask.py --sim-dir outputs/retrain/gr4h   # scores the recalibration
+uv run python scripts/gr4h/make_gr4h_input.py          # rebuilds the input from the h5, checks it
+uv run python scripts/gr4h/audit_gr4h_common_mask.py   # scores the shipped simulations, 6,323 hours
+Rscript scripts/gr4h/run_gr4h_airgr.R                  # NSE calibration, to outputs/retrain/gr4h
+Rscript scripts/gr4h/run_gr4h_airgr_kge.R              # KGE calibration, same folder
+# scores the new calibration
+uv run python scripts/gr4h/audit_gr4h_common_mask.py --sim-dir outputs/retrain/gr4h
 ```
 
-Training. The runners skip runs that already have a `.done` marker, so the shipped results are not
+### Training
+
+The runners skip runs that already have a `.done` marker, so the shipped results are not
 overwritten; write new runs to a new folder. For 10 seeds, training takes from well under an hour
 (lumped and distributed LSTM) to 6 to 8 GPU-hours (TOPMODEL configurations).
 
 ```bash
-uv run python scripts/run_sim.py --test --seeds 42     # smoke test, one epoch, writes to outputs/smoke
+uv run python scripts/run_sim.py --test --seeds 42     # smoke test: one epoch, in outputs/smoke
 bash scripts/run_all.sh outputs/retrain                # all configurations, seeds 42 to 51
 ```
 
@@ -167,13 +177,15 @@ earlier experiment; the runners pass the values above. In the manuscript rung 13
 (`Phys_DUH_Topmodel`) was evaluated with seeds 42 and 43; `run_sim.py` trains every rung for every
 seed it is given.
 
-Preparatory sweeps (Section 4.1 and Supplementary Section S5; seeds 0 to 4):
+### Preparatory sweeps
+
+Section 4.1 and Supplementary Section S5; seeds 0 to 4.
 
 ```bash
 uv run python scripts/abc/lumped_lstm.py --H 1 --L 240 --seeds 5 --batch 512 \
-    --backbones lstm,gru,transformer,mlp,dlinear --produtos telem            # Table S5
+    --backbones lstm,gru,transformer,mlp,dlinear --produtos telem          # Table S5
 uv run python scripts/abc/lumped_lstm.py --H 1 --L 240 --seeds 5 --batch 512 \
-    --backbones lstm --produtos telem,merge,era5land,imerg                   # Table S6 without MSWEP
+    --backbones lstm --produtos telem,merge,era5land,imerg                 # Table S6 without MSWEP
 ```
 
 The defaults of `lumped_lstm.py` (horizon 24, batch 1024) belong to the forecasting study. The
@@ -199,10 +211,10 @@ Tables S5 and S6 and on the RTX 3000 Ada for the comparison of Section S8.
 | Section S2 | `scripts/analysis/contrasts.py` | `outputs/grade_sim/` |
 | Table S3 | `scripts/analysis/table_s3.py` | `outputs/grade_sim/` |
 | Table S4 | `scripts/analysis/validation_panel.py` | `best_model.pt`; recorded output in `outputs/analysis/` |
-| Tables S5 and S6, Figure S1 | `scripts/abc/lumped_lstm.py`, `scripts/figures/tabela_abc.py`, `scripts/figures/fig_abc.py` | `outputs/abc/backbones_telem_gpu1.log`, `outputs/abc/products_lstm_gpu1.log`, product h5 |
+| Tables S5 and S6, Figure S1 | `scripts/abc/lumped_lstm.py`<br>`scripts/figures/tabela_abc.py`<br>`scripts/figures/fig_abc.py` | `outputs/abc/backbones_telem_gpu1.log`<br>`outputs/abc/products_lstm_gpu1.log`<br>product h5 |
 | Figure S2 | `scripts/figures/fig_produtos_evento.py` | product h5, `data/gis/ottobacias_tc.gpkg` |
 | Section S7 | `scripts/data_prep/diagnostics/` | telemetric and product h5 |
-| Section S8 | `scripts/figures/tabela_abc.py` | `outputs/abc/products_lstm_gpu0.log` (RTX 3000 Ada) against `products_lstm_gpu1.log` (RTX 2000 Ada) |
+| Section S8 | `scripts/figures/tabela_abc.py` | `outputs/abc/products_lstm_gpu0.log` (RTX 3000 Ada)<br>against `products_lstm_gpu1.log` (RTX 2000 Ada) |
 | Figures S3 to S5 | `scripts/figures/gerar_figuras_sim.py` | `outputs/grade_sim/` |
 | Section S11, Table S7, Eqs. S1 and S2 | `scripts/analysis/flv_signatures.py` | `outputs/grade_sim/` |
 
@@ -217,8 +229,10 @@ interrupted seeds 48 and 44 of `Phys_DUH_Topmodel`, whose folders keep only `con
 
 ```
 ottobacia/area_km2, cn_2022, tc_base_h, tc_manning_h   (245,)    sub-catchment attributes
-{train,val,test}/precipitation   (T, 245)  mm/h; IDW of 27 ANA telemetric gauges, readings above 305 mm/h removed (root attribute cap_mm_h = 305)
-{train,val,test}/pet             (T, 245)  mm/h; daily Hargreaves-Samani from ERA5-Land 2 m temperature, spread uniformly over the UTC day
+{train,val,test}/precipitation   (T, 245)  mm/h; IDW of 27 ANA telemetric gauges, readings
+                                           above 305 mm/h removed (root attribute cap_mm_h = 305)
+{train,val,test}/pet             (T, 245)  mm/h; daily Hargreaves-Samani from ERA5-Land 2 m
+                                           temperature, spread uniformly over the UTC day
 {train,val,test}/streamflow      (T,)      m³/s; ANA 58585000, hourly mean of the 15 min record
 {train,val,test}/timestamps      (T,)      UTC
 ```
@@ -237,8 +251,9 @@ were aggregated in Google Earth Engine (polygon reduction at 1 km scale, with th
 for 8 and 7 sub-catchments smaller than a pixel).
 
 MSWEP V3.16 is distributed by GloH2O under CC BY-NC 4.0, with terms that restrict redistribution,
-so `dataset_58585000_mswep.h5` is not included. `scripts/data_prep/products/montar_dataset_mswep_area.py`
-rebuilds it from the MSWEP files obtained from GloH2O. Without it, the MSWEP runs of the sweep
+so `dataset_58585000_mswep.h5` is not included.
+`scripts/data_prep/products/montar_dataset_mswep_area.py` rebuilds it from the MSWEP files
+obtained from GloH2O. Without it, the MSWEP runs of the sweep
 cannot be retrained and its panel in Figure S2 is replaced by a note; the MSWEP row of Table S6
 and its bar in Figure S1 are drawn from the logs in `outputs/abc/`.
 
@@ -277,4 +292,5 @@ and the article once published. Machine-readable metadata: [CITATION.cff](CITATI
 ## Use of generative AI
 
 Parts of the model, training and analysis code were written with the assistance of generative AI
-coding tools (Claude, Anthropic; Codex, OpenAI), and all code was reviewed and tested by the authors.
+coding tools (Claude, Anthropic; Codex, OpenAI), and all code was reviewed and tested by the
+authors.

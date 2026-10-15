@@ -6,11 +6,17 @@ SIRGAS 2000 / UTM zone 23S (EPSG:31983) unless stated otherwise.
 
 ## Files in this folder
 
-| File | Content | Source |
-|---|---|---|
-| `bacia_manuel_duarte.shp` (with `.shx`, `.dbf`, `.prj`, `.cpg`) | Outline of the catchment at the Manuel Duarte gauge (ANA 58585000), 3,117 km²; two polygons, the catchment and a 597 m² sliver of the raster conversion, dissolved by the scripts | Delineated by the authors from the ANADEM v1 terrain model in ArcGIS Pro (manual step 1 in `scripts/data_prep/README.md`) |
-| `ottobacias_tc.gpkg` | The 245 sub-catchments, in the column order of the h5 datasets, with code (`cobacia`), area, curve number and concentration times | ANA BHAE sub-catchments clipped by the outline (manual step 2 in `scripts/data_prep/README.md`); attributes computed by the authors |
-| `naturalearth_lowres/` | Countries at 1:110m (177 polygons, EPSG:4326) for the inset of Figure 1 | Natural Earth, public domain; copy of the `naturalearth_lowres` test file distributed with pyogrio 0.12.1 (originally the GeoPandas sample dataset) |
+- `bacia_manuel_duarte.shp` (with `.shx`, `.dbf`, `.prj`, `.cpg`): outline of the catchment at
+  the Manuel Duarte gauge (ANA 58585000), 3,117 km², in two polygons, the catchment and a 597 m²
+  sliver of the raster conversion, dissolved by the scripts. Delineated by the authors from the
+  ANADEM v1 terrain model in ArcGIS Pro (manual step 1 in
+  [scripts/data_prep/README.md](../../scripts/data_prep/README.md#manual-gis-steps-arcgis-pro)).
+- `ottobacias_tc.gpkg`: the 245 sub-catchments, in the column order of the h5 datasets, with code
+  (`cobacia`), area, curve number and concentration times. ANA BHAE sub-catchments clipped by the
+  outline (manual step 2, same README); attributes computed by the authors.
+- `naturalearth_lowres/`: countries at 1:110m (177 polygons, EPSG:4326) for the inset of Figure 1.
+  Natural Earth, public domain; copy of the `naturalearth_lowres` test file distributed with
+  pyogrio 0.12.1 (originally the GeoPandas sample dataset).
 
 These files are released with the rest of `data/` under CC BY 4.0, with the attributions listed in
 [LICENSE-DATA.md](../../LICENSE-DATA.md); Natural Earth is in the public domain. Figure 1 also
@@ -56,8 +62,13 @@ uv run python scripts/figures/mapa_localizacao.py --layers-dir /path/to/layers
   stored as an unnamed `LOCAL_CS` ("SIRGAS 2000 / UTM zone 23S") without an EPSG code; the script
   takes such a file as EPSG:31983 and stops if the DEM declares another EPSG code. The `.tfw`,
   `.ovr` and `.aux.xml` files that ArcGIS wrote next to it are not needed.
-- An equivalent file can be made with GDAL, for example
-  `gdalwarp -t_srs EPSG:31983 -te 534243.58 7523943.44 653413.65 7571871.83 -tr 30.2462 30.2387 anadem_v1_23K.tif dem.tif`.
+- An equivalent file can be made with GDAL, for example:
+
+  ```bash
+  gdalwarp -t_srs EPSG:31983 -te 534243.58 7523943.44 653413.65 7571871.83 \
+      -tr 30.2462 30.2387 anadem_v1_23K.tif dem.tif
+  ```
+
   The authors did not use this route, and the resampling of the ArcGIS projection was not
   recorded, so the hypsometry of such a file differs slightly from the submitted figure.
 - The script sets `GDAL_PAM_ENABLED=NO` (unless already set), so that GDAL does not write
