@@ -1,0 +1,337 @@
+{
+  "rows": [
+    {
+      "n": 4,
+      "config": "LSTM",
+      "seed": 42,
+      "nse": 0.723,
+      "kge": 0.726,
+      "flv": 8.7,
+      "fhv": -25.6
+    },
+    {
+      "n": 4,
+      "config": "LSTM",
+      "seed": 43,
+      "nse": 0.78,
+      "kge": 0.835,
+      "flv": 8.3,
+      "fhv": -10.8
+    },
+    {
+      "n": 4,
+      "config": "LSTM",
+      "seed": 44,
+      "nse": 0.752,
+      "kge": 0.788,
+      "flv": 9.8,
+      "fhv": -14.6
+    },
+    {
+      "n": 4,
+      "config": "LSTM",
+      "seed": 45,
+      "nse": 0.744,
+      "kge": 0.793,
+      "flv": 10.2,
+      "fhv": -14.8
+    },
+    {
+      "n": 4,
+      "config": "LSTM",
+      "seed": 46,
+      "nse": 0.766,
+      "kge": 0.739,
+      "flv": 8.2,
+      "fhv": -32.4
+    },
+    {
+      "n": 4,
+      "config": "LSTM",
+      "seed": 47,
+      "nse": 0.765,
+      "kge": 0.761,
+      "flv": 10.0,
+      "fhv": -21.5
+    },
+    {
+      "n": 4,
+      "config": "LSTM",
+      "seed": 48,
+      "nse": 0.779,
+      "kge": 0.819,
+      "flv": 9.4,
+      "fhv": -14.7
+    },
+    {
+      "n": 4,
+      "config": "LSTM",
+      "seed": 49,
+      "nse": 0.75,
+      "kge": 0.774,
+      "flv": 9.6,
+      "fhv": -21.9
+    },
+    {
+      "n": 4,
+      "config": "LSTM",
+      "seed": 50,
+      "nse": 0.753,
+      "kge": 0.78,
+      "flv": 13.9,
+      "fhv": -12.5
+    },
+    {
+      "n": 4,
+      "config": "LSTM",
+      "seed": 51,
+      "nse": 0.691,
+      "kge": 0.708,
+      "flv": 12.6,
+      "fhv": -24.2
+    },
+    {
+      "n": 9,
+      "config": "LSTM_DUH_Topmodel",
+      "seed": 42,
+      "nse": 0.754,
+      "kge": 0.794,
+      "flv": 10.2,
+      "fhv": -13.0
+    },
+    {
+      "n": 9,
+      "config": "LSTM_DUH_Topmodel",
+      "seed": 43,
+      "nse": 0.628,
+      "kge": 0.677,
+      "flv": 8.4,
+      "fhv": -26.1
+    },
+    {
+      "n": 9,
+      "config": "LSTM_DUH_Topmodel",
+      "seed": 44,
+      "nse": 0.708,
+      "kge": 0.705,
+      "flv": 11.1,
+      "fhv": -27.8
+    },
+    {
+      "n": 9,
+      "config": "LSTM_DUH_Topmodel",
+      "seed": 45,
+      "nse": 0.765,
+      "kge": 0.759,
+      "flv": 6.9,
+      "fhv": -22.7
+    },
+    {
+      "n": 9,
+      "config": "LSTM_DUH_Topmodel",
+      "seed": 46,
+      "nse": 0.725,
+      "kge": 0.75,
+      "flv": 10.1,
+      "fhv": -19.9
+    },
+    {
+      "n": 9,
+      "config": "LSTM_DUH_Topmodel",
+      "seed": 47,
+      "nse": 0.708,
+      "kge": 0.708,
+      "flv": 10.3,
+      "fhv": -25.1
+    },
+    {
+      "n": 9,
+      "config": "LSTM_DUH_Topmodel",
+      "seed": 48,
+      "nse": 0.739,
+      "kge": 0.742,
+      "flv": 11.4,
+      "fhv": -23.1
+    },
+    {
+      "n": 9,
+      "config": "LSTM_DUH_Topmodel",
+      "seed": 49,
+      "nse": 0.714,
+      "kge": 0.707,
+      "flv": 12.9,
+      "fhv": -26.6
+    },
+    {
+      "n": 9,
+      "config": "LSTM_DUH_Topmodel",
+      "seed": 50,
+      "nse": 0.75,
+      "kge": 0.759,
+      "flv": 11.2,
+      "fhv": -22.3
+    },
+    {
+      "n": 9,
+      "config": "LSTM_DUH_Topmodel",
+      "seed": 51,
+      "nse": 0.772,
+      "kge": 0.762,
+      "flv": 9.9,
+      "fhv": -21.2
+    },
+    {
+      "n": 10,
+      "config": "LSTM_DUH_Topmodel_PeOnly",
+      "seed": 42,
+      "nse": 0.66,
+      "kge": 0.769,
+      "flv": 7.2,
+      "fhv": -15.2
+    },
+    {
+      "n": 10,
+      "config": "LSTM_DUH_Topmodel_PeOnly",
+      "seed": 43,
+      "nse": 0.729,
+      "kge": 0.794,
+      "flv": 7.2,
+      "fhv": -16.3
+    },
+    {
+      "n": 10,
+      "config": "LSTM_DUH_Topmodel_PeOnly",
+      "seed": 44,
+      "nse": 0.718,
+      "kge": 0.784,
+      "flv": 9.2,
+      "fhv": -18.6
+    },
+    {
+      "n": 10,
+      "config": "LSTM_DUH_Topmodel_PeOnly",
+      "seed": 45,
+      "nse": 0.676,
+      "kge": 0.718,
+      "flv": 10.4,
+      "fhv": -23.2
+    },
+    {
+      "n": 10,
+      "config": "LSTM_DUH_Topmodel_PeOnly",
+      "seed": 46,
+      "nse": 0.649,
+      "kge": 0.731,
+      "flv": 8.6,
+      "fhv": -19.4
+    },
+    {
+      "n": 10,
+      "config": "LSTM_DUH_Topmodel_PeOnly",
+      "seed": 47,
+      "nse": 0.669,
+      "kge": 0.684,
+      "flv": 11.3,
+      "fhv": -32.7
+    },
+    {
+      "n": 10,
+      "config": "LSTM_DUH_Topmodel_PeOnly",
+      "seed": 48,
+      "nse": 0.673,
+      "kge": 0.74,
+      "flv": 11.6,
+      "fhv": -19.7
+    },
+    {
+      "n": 10,
+      "config": "LSTM_DUH_Topmodel_PeOnly",
+      "seed": 49,
+      "nse": 0.72,
+      "kge": 0.765,
+      "flv": 9.5,
+      "fhv": -19.6
+    },
+    {
+      "n": 10,
+      "config": "LSTM_DUH_Topmodel_PeOnly",
+      "seed": 50,
+      "nse": 0.684,
+      "kge": 0.697,
+      "flv": 11.4,
+      "fhv": -30.1
+    },
+    {
+      "n": 10,
+      "config": "LSTM_DUH_Topmodel_PeOnly",
+      "seed": 51,
+      "nse": 0.692,
+      "kge": 0.735,
+      "flv": 9.3,
+      "fhv": -20.8
+    }
+  ],
+  "agg": {
+    "LSTM": {
+      "nse": {
+        "mean": 0.7503,
+        "std": 0.025456040540508283
+      },
+      "kge": {
+        "mean": 0.7723,
+        "std": 0.037899999999999996
+      },
+      "flv": {
+        "mean": 10.07,
+        "std": 1.7418668146560459
+      },
+      "fhv": {
+        "mean": -19.3,
+        "std": 6.549045732013177
+      },
+      "n_tabela": 4,
+      "n_seeds": 10
+    },
+    "LSTM_DUH_Topmodel": {
+      "nse": {
+        "mean": 0.7263,
+        "std": 0.0394488276124906
+      },
+      "kge": {
+        "mean": 0.7363000000000002,
+        "std": 0.033758110136676796
+      },
+      "flv": {
+        "mean": 10.240000000000002,
+        "std": 1.5736581585592215
+      },
+      "fhv": {
+        "mean": -22.78,
+        "std": 4.037028610252844
+      },
+      "n_tabela": 9,
+      "n_seeds": 10
+    },
+    "LSTM_DUH_Topmodel_PeOnly": {
+      "nse": {
+        "mean": 0.687,
+        "std": 0.025810850431552984
+      },
+      "kge": {
+        "mean": 0.7417,
+        "std": 0.03444430286709256
+      },
+      "flv": {
+        "mean": 9.57,
+        "std": 1.5343076614551594
+      },
+      "fhv": {
+        "mean": -21.56,
+        "std": 5.377211173089635
+      },
+      "n_tabela": 10,
+      "n_seeds": 10
+    }
+  },
+  "fonte": "stdout job 42 gpuq (inferencia GPU, sanidade 30/30 vs best_val_nse)"
+}

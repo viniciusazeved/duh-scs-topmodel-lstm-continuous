@@ -1,4 +1,14 @@
 #!/usr/bin/env python
+# RODADA 7 (2026-10-10), decisao D3 do Vinicius: metricas com duas casas, formatadas a partir
+# do valor bruto (float com '.2f'; nunca arredondar um numero de tres casas ja impresso).
+# Copia de D:/Artigo_JOH/scripts/gerar_figuras_sim.py (sha256 e7afa37aa1416bbd...,
+# manifesto externo do congelamento de 29/09/2026); o original NAO foi alterado.
+# Alteracoes (todas marcadas "rodada 7"): formatos '.3f' -> '.2f' nos rotulos de metrica
+# dentro das imagens; OUT no staging da rodada 7; _save grava so os formatos que o LaTeX usa;
+# main() roda so as 5 figuras com rotulos de tres casas. Nada de dado, cor, layout ou estatistica.
+# Rodar (sem tocar no projeto congelado):
+#   uv run --no-project --python 3.13.10 --with matplotlib==3.10.8 --with numpy==2.4.1 \
+#     --with pandas==3.0.0 --with h5py==3.15.1 python gerar_figuras_sim_rodada7.py
 """Figuras do artigo de SIMULACAO continua (estilo Elsevier herdado do forecasting),
 a partir da grade_sim (telem, horizonte 1, 10 sementes).
 
@@ -22,7 +32,7 @@ import numpy as np
 from matplotlib.ticker import FixedLocator, NullFormatter, ScalarFormatter
 
 GRADE = Path(r"D:\TTD_SCS_LSTM\ablacao_skill\outputs\grade_sim")
-OUT = Path(r"D:\Artigo_JOH\artigo_simulacao\figuras")
+OUT = Path(r"D:\Artigo_JOH\artigo_simulacao\revisao_paulo\rodada7_2026-10-09\staging\figuras")  # rodada 7
 OUT.mkdir(parents=True, exist_ok=True)
 
 # ---- estilo Elsevier (identico ao gerar_figuras.py do forecasting) ----
@@ -44,9 +54,15 @@ COR = {"info": "#4575b4", "space": "#9ecae1", "route": "#bdbdbd",
        "gen": "#1b9e77", "pe": "#7b3294", "neg": "#b03a2e"}
 
 
+# rodada 7: so os formatos presentes em overleaf_rev02/figuras (o pdflatex prefere o .pdf
+# quando ha os dois); das figuras regeradas, so fig_geradores_puros tem .pdf la
+COM_PDF = {"fig_geradores_puros", "fig_recessao"}  # rodada 7: o SI carrega estas duas em PDF
+
+
 def _save(fig, name):
     fig.savefig(OUT / f"{name}.png")
-    fig.savefig(OUT / f"{name}.pdf")
+    if name in COM_PDF:  # rodada 7
+        fig.savefig(OUT / f"{name}.pdf")
     plt.close(fig)
     print(f"[OK] {name}")
 
@@ -134,24 +150,28 @@ def fig1_cadeia():
             ax.plot([i - 1 + 0.31, i - 0.31], [prev, prev], color="0.55",
                     lw=0.7, ls=(0, (3, 2)), zorder=2)
         if kind == "ref":     # barra negativa isolada (chuva sozinha): rotulo abaixo
-            ax.annotate(f"{v:+.3f}", (i, v), xytext=(0, -3), textcoords="offset points",
+            ax.annotate(f"{v:+.2f}", (i, v), xytext=(0, -3), textcoords="offset points",
                         ha="center", va="top", fontsize=7.5, color=COR["neg"])
         else:
             d = v if kind == "start" else v - prev
-            ax.annotate(f"{d:+.3f}", (i, max(prev if prev is not None else 0.0, v)),
-                        xytext=(0, 3), textcoords="offset points", ha="center",
+            # rodada 7 (layout, 11/10): nos degraus 1 e 2 a linha do ensemble cruzava o
+            # rotulo; ele passa para a direita do losango
+            lado = i in (1, 2)
+            ax.annotate(f"{d:+.2f}", (i, max(prev if prev is not None else 0.0, v)),
+                        xytext=(8, 3) if lado else (0, 3), textcoords="offset points",
+                        ha="left" if lado else "center",
                         va="bottom", fontsize=7.5, color="0.2", zorder=7,
                         bbox=dict(boxstyle="round,pad=0.1", fc="white", ec="none", alpha=0.85))
             prev = v
     # overlay: NSE do ENSEMBLE (media das previsoes das seeds) por configuracao
     ax.plot(x, ens, marker="D", ms=4.5, lw=0.9, color="0.15",
             markerfacecolor="white", markeredgecolor="0.15", zorder=6)
-    ax.annotate(f"ensemble {ens[-1]:.3f}", (len(spine) - 1, ens[-1]), xytext=(0, 7),
+    ax.annotate(f"ensemble {ens[-1]:.2f}", (len(spine) - 1, ens[-1]), xytext=(0, 7),
                 textcoords="offset points", ha="center", fontsize=7.5,
                 fontweight="bold", color="0.15")
     ax.axhline(0, color="0.5", lw=0.6)
     # fisica pura colapsa: nota no canto (fora de escala p/ nao achatar a espinha)
-    ax.text(0.02, 0.96, f"Physics only (DUH-TOPMODEL, no LSTM): {phys:.3f}", transform=ax.transAxes,
+    ax.text(0.02, 0.96, f"Physics only (DUH-TOPMODEL, no LSTM): {phys:.2f}", transform=ax.transAxes,
             ha="left", va="top", fontsize=6.8, color=COR["neg"])
     from matplotlib.lines import Line2D
     from matplotlib.patches import Patch
@@ -178,6 +198,8 @@ def fig_robustez():
     order = [
         ("LSTM",                      "LSTM (neural)",            "neutral"),
         ("LSTM_DUH",                  "+ DUH",                    "neutral"),
+        # rodada 7 (loop 2, 11/10): o controle so de roteamento, sem gerador, tem DP parecida (0,06)
+        ("LSTM_DUH_Fixed",            "+ DUH (fixed)",            "neutral"),
         ("LSTM_DUH_SCS",              "+ SCS-CN",                 "scs"),
         ("LSTM_DUH_Topmodel",         "+ TOPMODEL",               "top"),
         ("LSTM_DUH_Topmodel_Baseflow","+ TOPMODEL + baseflow",    "top"),
@@ -193,7 +215,7 @@ def fig_robustez():
     ax.barh(y, [s for _, s, _ in rows], color=[c for _, _, c in rows],
             alpha=0.9, edgecolor="0.3", linewidth=0.4)
     for yi, (_, s, _) in zip(y, rows):
-        ax.annotate(f"{s:.3f}", (s, yi), xytext=(3, 0),
+        ax.annotate(f"{s:.2f}", (s, yi), xytext=(3, 0),
                     textcoords="offset points", va="center", fontsize=7.5, color="0.2")
     ax.set_yticks(y)
     ax.set_yticklabels([lab for lab, _, _ in rows], fontsize=8)
@@ -250,15 +272,15 @@ def fig_fdc():
     ax.axvspan(70, 100, color="0.93", zorder=0)
     for arr, c, lw, lab, z in [
             (obs, "black", 1.7, "Observed", 5),
-            (Pb, "#2e75b6", 1.2, f"Best hybrid (LSTM + DUH-TOPMODEL, $P_e$-only): NSE = {nb:.3f}", 4),
-            (Pw, "#e67e22", 1.2, f"Physics only (DUH-TOPMODEL, no LSTM): NSE = {nw:.3f}", 3),
-            (Pn, "#7f8c8d", 1.1, f"Worst neural (LSTM, rainfall only): NSE = {nn:.3f}", 2)]:
+            (Pb, "#2e75b6", 1.2, f"Best hybrid (LSTM + DUH-TOPMODEL, $P_e$-only): NSE = {nb:.2f}", 4),
+            (Pw, "#e67e22", 1.2, f"Physics only (DUH-TOPMODEL, no LSTM): NSE = {nw:.2f}", 3),
+            (Pn, "#7f8c8d", 1.1, f"Worst neural (LSTM, rainfall only): NSE = {nn:.2f}", 2)]:
         pp, ss = _fdc(arr)
         ax.plot(pp, ss, color=c, lw=lw, label=lab, zorder=z)
     _nice_logy(ax, [20, 30, 40, 50, 60, 80, 100, 150, 200])
     ax.set_xlim(0, 100)
     ax.set_xlabel("Exceedance probability (%)")
-    ax.set_ylabel("Streamflow (m$^3$/s)")
+    ax.set_ylabel("Discharge (m$^3$ s$^{-1}$)")
     ax.annotate("low flows (FLV)", (85, ax.get_ylim()[0]), xytext=(0, 4),
                 textcoords="offset points", ha="center", va="bottom",
                 fontsize=7, color="0.45")
@@ -312,7 +334,7 @@ def fig_parametros():
             jit = np.linspace(-0.06, 0.06, len(v)) if len(v) > 1 else np.zeros(1)
             ax.scatter(np.full(len(v), i) + jit, v, s=12, color=color, alpha=0.6,
                        edgecolor="none", zorder=3)
-            ax.errorbar(i, v.mean(), yerr=v.std(), fmt="o", ms=5, color=color,
+            ax.errorbar(i, v.mean(), yerr=v.std(ddof=1), fmt="o", ms=5, color=color,
                         capsize=3, elinewidth=0.8, zorder=4)
             ticks.append(i); labels.append(lab)
         for rv, rlab in refs:
@@ -334,13 +356,15 @@ TELEM_CANDS = [r"D:\TTD_SCS_LSTM\ablacao_v2\data\dataset_58585000_telem.h5",
 
 
 def fig_recessao():
-    """Janela de recessao/estiagem (a mais seca do teste, log-y): o gerador com estado
-    (TOPMODEL) acompanha melhor a drenagem/baseflow que o neural puro. Alinha as predicoes
-    as datas reconstruindo as janelas (L=240,H=1) e validando obs vs target do npz."""
+    """Janela de recessao/estiagem (a mais seca do teste, log-y): com o ATALHO FECHADO
+    (variantes PeOnly) o gerador com estado (TOPMODEL) acompanha melhor a drenagem/baseflow
+    que o neural puro e que o gerador de evento (SCS-CN). Elenco: obs / LSTM puro (degrau 4)
+    / +SCS-CN PeOnly (degrau 8) / +TOPMODEL PeOnly (degrau 10). Alinha as predicoes as datas
+    reconstruindo as janelas (L=240,H=1) e validando obs vs target do npz."""
     import h5py
     import pandas as pd
     L, H = 240, 1
-    P_top, target = _pred_mean("LSTM_DUH_Topmodel")
+    P_top, target = _pred_mean("LSTM_DUH_Topmodel_PeOnly")
     if P_top is None:
         print("[skip] fig_recessao: sem predictions")
         return
@@ -368,9 +392,9 @@ def fig_recessao():
 
     t = pd.to_datetime(tsrec[:n], unit="s", utc=True).tz_localize(None)
     obs = pd.Series(target[:n], index=t).sort_index()
-    models = {"LSTM": ("Pure LSTM", "#7f8c8d", "--"),
-              "LSTM_DUH_SCS": ("+ SCS-CN", "#2e75b6", "-"),
-              "LSTM_DUH_Topmodel": ("+ TOPMODEL", "#1b9e77", "-")}
+    models = {"LSTM": ("Pure LSTM (rung 4)", "#7f8c8d", "--"),
+              "LSTM_DUH_SCS_PeOnly": (r"+ SCS-CN, $P_e$ only (rung 8)", "#2e75b6", "-"),
+              "LSTM_DUH_Topmodel_PeOnly": (r"+ TOPMODEL, $P_e$ only (rung 10)", "#1b9e77", "-")}
     sims = {}
     for m in models:
         P, _ = _pred_mean(m)
@@ -384,14 +408,24 @@ def fig_recessao():
     fig, ax = plt.subplots(figsize=(7.2, 3.2))
     o = obs[(obs.index >= a) & (obs.index <= b)]
     ax.plot(o.index, o.values, color="black", lw=1.5, label="Observed", zorder=5)
+    # vies nas 30% menores vazoes da janela (ressalva da legenda da Fig. S4)
+    lim30 = np.nanpercentile(o.values, 30)
+    baixo = o.values <= lim30
+    print(f"[recessao] janela {a.date()} a {b.date()} | obs min={np.nanmin(o.values):.1f} "
+          f"m3/s | p30={lim30:.1f} m3/s (n={int(baixo.sum())} h)")
     for m, (lab, c2, ls) in models.items():
         if m in sims:
             s = sims[m][(sims[m].index >= a) & (sims[m].index <= b)]
             ax.plot(s.index, s.values, color=c2, lw=1.0, ls=ls, label=lab, zorder=4)
-    _nice_logy(ax, [20, 30, 40, 50, 60, 70])
-    ax.set_ylabel("Streamflow (m$^3$/s)")
+            sv = s.reindex(o.index).values
+            vies = 100.0 * (np.nanmean(sv[baixo]) - np.nanmean(o.values[baixo])) / np.nanmean(o.values[baixo])
+            print(f"[recessao] {m}: min={np.nanmin(sv):.1f} m3/s | vies nas 30% menores = {vies:+.1f}%")
+    _nice_logy(ax, [15, 20, 30, 40, 50, 60, 70])
+    ax.set_ylim(15, 75)   # faixa fixa: todos os ticks 15..70 visiveis
+    ax.set_ylabel("Discharge (m$^3$ s$^{-1}$)")
     ax.set_xlabel("Date (test period)")
-    ax.legend(loc="upper right", fontsize=7.5, ncol=2)
+    # rodada 7 (layout, 11/10): legenda acima do eixo, numa linha; dentro dele cobria os picos de ~70 m3/s
+    ax.legend(loc="lower center", bbox_to_anchor=(0.5, 1.0), fontsize=7.5, ncol=4, frameon=False)
     ax.grid(axis="both", which="both", color="0.9", lw=0.3)
     fig.autofmt_xdate()
     fig.tight_layout()
@@ -441,27 +475,68 @@ def fig_serie():
     fig, ax = plt.subplots(figsize=(7.4, 3.2))
     ax.plot(datas[:n], obs[:n], color="black", lw=0.7, label="Observed", zorder=4)
     ax.plot(datas[:n], Pb[:n], color="#2e75b6", lw=0.7, zorder=3,
-            label=f"Best hybrid (LSTM + DUH-TOPMODEL, $P_e$-only): NSE = {nb:.3f}")
+            label=f"Best hybrid (LSTM + DUH-TOPMODEL, $P_e$-only): NSE = {nb:.2f}")
     ax.plot(datas[:n], Pw[:n], color="#e67e22", lw=0.7, zorder=2,
-            label=f"Physics only (DUH-TOPMODEL, no LSTM): NSE = {nw:.3f}")
+            label=f"Physics only (DUH-TOPMODEL, no LSTM): NSE = {nw:.2f}")
     ax.plot(datas[:n], Pn[:n], color="#7f8c8d", lw=0.7, zorder=1,
-            label=f"Worst neural (LSTM, rainfall only): NSE = {nn:.3f}")
-    ax.set_ylabel("Streamflow (m$^3$ s$^{-1}$)")
+            label=f"Worst neural (LSTM, rainfall only): NSE = {nn:.2f}")
+    ax.set_ylabel("Discharge (m$^3$ s$^{-1}$)")
     ax.set_xlabel("Date (test period)")
-    ax.legend(loc="upper right", fontsize=7.5)
+    # rodada 7 (layout, 11/10): no canto direito a legenda cobria o pico de dezembro
+    ax.legend(loc="upper center", fontsize=7.5)
     ax.grid(axis="both", color="0.9", lw=0.3)
     fig.autofmt_xdate()
     fig.tight_layout()
     _save(fig, "fig_serie")
 
 
+# ------------------------------------------------- Fig. S5 -- geradores puros (sem LSTM)
+def fig_geradores_puros():
+    """Serie completa do teste, escala linear: observado vs os DOIS geradores puros rodados
+    sem a LSTM (Phys_DUH_SCS, ensemble de 10 sementes; Phys_DUH_Topmodel, 2 sementes).
+    Sustenta a §5.2 e os degraus 12-13 da Tabela 3 (NSE de ensemble negativo nos dois)."""
+    obs, datas = _obs_e_datas()
+    if obs is None:
+        print("[skip] fig_geradores_puros: telem nao encontrado")
+        return
+    Ps, tgt = _pred_mean("Phys_DUH_SCS")
+    Pt, _ = _pred_mean("Phys_DUH_Topmodel")
+    if Ps is None or Pt is None:
+        print("[skip] fig_geradores_puros: sem predictions dos geradores puros")
+        return
+    n = min(len(obs), len(datas), len(Ps), len(Pt), len(tgt))
+    d = np.nanmax(np.abs(obs[:n] - tgt[:n]))
+    print(f"[geradores] alinhamento obs vs npz target: max|diff|={d:.4g} (n={n})")
+    ns, nt = _nse(Ps[:n], obs[:n]), _nse(Pt[:n], obs[:n])
+    n_scs = sum(1 for sd in sorted(GRADE.glob("seed*")) if list((sd / "Phys_DUH_SCS").glob("**/predictions.npz")))
+    n_top = sum(1 for sd in sorted(GRADE.glob("seed*")) if list((sd / "Phys_DUH_Topmodel").glob("**/predictions.npz")))
+    print(f"[geradores] Phys_DUH_SCS: {n_scs} seeds, ensemble NSE = {ns:.3f} | "
+          f"Phys_DUH_Topmodel: {n_top} seeds, ensemble NSE = {nt:.3f}")
+
+    fig, ax = plt.subplots(figsize=(7.4, 3.2))
+    ax.plot(datas[:n], obs[:n], color="black", lw=0.7, label="Observed", zorder=4)
+    ax.plot(datas[:n], Ps[:n], color="#e67e22", lw=0.7, zorder=3,
+            label=f"DUH-SCS-CN, no LSTM ({n_scs} seeds): NSE = {ns:.2f}")
+    ax.plot(datas[:n], Pt[:n], color="#1b9e77", lw=0.7, zorder=2,
+            label=f"DUH-TOPMODEL, no LSTM ({n_top} seeds): NSE = {nt:.2f}")
+    ax.set_ylabel("Discharge (m$^3$ s$^{-1}$)")
+    ax.set_xlabel("Date (test period)")
+    # rodada 7 (layout, 11/10): no canto direito a legenda cobria o pico de dezembro
+    ax.legend(loc="upper center", fontsize=7.5)
+    ax.grid(axis="both", color="0.9", lw=0.3)
+    fig.autofmt_xdate()
+    fig.tight_layout()
+    _save(fig, "fig_geradores_puros")
+
+
 def main():
+    # rodada 7: so as figuras com rotulos de metrica (Figuras 4, 5, 6, S3 e S5);
+    # fig_parametros e fig_recessao nao imprimem metrica e nao sao regeradas
     fig1_cadeia()
     fig_robustez()
     fig_fdc()
-    fig_parametros()
-    fig_recessao()
     fig_serie()
+    fig_geradores_puros()
 
 
 if __name__ == "__main__":

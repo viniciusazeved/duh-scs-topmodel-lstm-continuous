@@ -1,0 +1,796 @@
+======================================================================
+  ABLACAO - TTD-SCS-LSTM v2
+  10 Experimentos de Ablacao
+======================================================================
+
+Device: cuda
+Seed: 42
+Dataset: D:\TTD_SCS_LSTM\ablacao_skill\data\dataset_58585000_telem.h5
+Lookback: 240h (10.0 dias)
+Horizon: 1h
+Epochs: 150
+Batch size: 512
+
+Modelos a executar:
+  - lstm_pet: 
+
+Carregando dados...
+  Train: 27,292 samples
+  Val: 5,998 samples
+  Test: 6,323 samples
+  Ottobacias: 245
+  CN 2022 medio: 64.4
+  Tc Base medio: 10.48h
+  Tc Manning medio: 25.87h
+
+[1/1] lstm_pet
+
+============================================================
+  Modelo: LSTM_PET
+  Parametros: 117,889
+============================================================
+Training LSTM_PET:   0%|          | 0/150 [00:00<?, ?it/s]Training LSTM_PET:   0%|          | 0/150 [00:02<?, ?it/s]
+Traceback (most recent call last):
+  File "D:\TTD_SCS_LSTM\ablacao_skill\scripts\train.py", line 699, in main
+    results = run_experiment(
+        model_type=model_type,
+    ...<6 lines>...
+        verbose=True
+    )
+  File "D:\TTD_SCS_LSTM\ablacao_skill\scripts\train.py", line 518, in run_experiment
+    history, best_val_nse = train_model(
+                            ~~~~~~~~~~~^
+        model, train_loader, val_loader, config, DEVICE, exp_dir, verbose
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\TTD_SCS_LSTM\ablacao_skill\scripts\train.py", line 423, in train_model
+    val_metrics, _, _, _ = evaluate(model, val_loader, device)
+                           ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\TTD_SCS_LSTM\ablacao_skill\scripts\train.py", line 324, in evaluate
+    output = model(precip, hour, month)
+  File "D:\TTD_SCS_LSTM\.venv\Lib\site-packages\torch\nn\modules\module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\TTD_SCS_LSTM\.venv\Lib\site-packages\torch\nn\modules\module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "D:\TTD_SCS_LSTM\ablacao_skill\src\ttd_scs_lstm\models\models.py", line 520, in forward
+    raise ValueError("LSTM_PET exige pet no forward (gate do train.py deve passar pet)")
+ValueError: LSTM_PET exige pet no forward (gate do train.py deve passar pet)
+  [ERRO] LSTM_PET exige pet no forward (gate do train.py deve passar pet)
+
+====================================================================================================
+  RESUMO - ABLACAO TTD-SCS-LSTM v2
+====================================================================================================
+
+Modelo                      NSE_1h   NSE_3h   NSE_6h  NSE_12h  NSE_24h     Params
+-------------------------------------------------------------------------------------
+lstm_pet                       nan      nan      nan      nan      nan          0
+
+-------------------------------------------------------------------------------------
+ANALISE DE HIPOTESES:
+-------------------------------------------------------------------------------------
+
+[FALHA] 1 modelo(s) com problema:
+   - lstm_pet (erro: LSTM_PET exige pet no forward (gate do train.py deve passar pet))
+======================================================================
+  ABLACAO - TTD-SCS-LSTM v2
+  10 Experimentos de Ablacao
+======================================================================
+
+Device: cuda
+Seed: 43
+Dataset: D:\TTD_SCS_LSTM\ablacao_skill\data\dataset_58585000_telem.h5
+Lookback: 240h (10.0 dias)
+Horizon: 1h
+Epochs: 150
+Batch size: 512
+
+Modelos a executar:
+  - lstm_pet: 
+
+Carregando dados...
+  Train: 27,292 samples
+  Val: 5,998 samples
+  Test: 6,323 samples
+  Ottobacias: 245
+  CN 2022 medio: 64.4
+  Tc Base medio: 10.48h
+  Tc Manning medio: 25.87h
+
+[1/1] lstm_pet
+
+============================================================
+  Modelo: LSTM_PET
+  Parametros: 117,889
+============================================================
+Training LSTM_PET:   0%|          | 0/150 [00:00<?, ?it/s]Training LSTM_PET:   0%|          | 0/150 [00:02<?, ?it/s]
+Traceback (most recent call last):
+  File "D:\TTD_SCS_LSTM\ablacao_skill\scripts\train.py", line 699, in main
+    results = run_experiment(
+        model_type=model_type,
+    ...<6 lines>...
+        verbose=True
+    )
+  File "D:\TTD_SCS_LSTM\ablacao_skill\scripts\train.py", line 518, in run_experiment
+    history, best_val_nse = train_model(
+                            ~~~~~~~~~~~^
+        model, train_loader, val_loader, config, DEVICE, exp_dir, verbose
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\TTD_SCS_LSTM\ablacao_skill\scripts\train.py", line 423, in train_model
+    val_metrics, _, _, _ = evaluate(model, val_loader, device)
+                           ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\TTD_SCS_LSTM\ablacao_skill\scripts\train.py", line 324, in evaluate
+    output = model(precip, hour, month)
+  File "D:\TTD_SCS_LSTM\.venv\Lib\site-packages\torch\nn\modules\module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\TTD_SCS_LSTM\.venv\Lib\site-packages\torch\nn\modules\module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "D:\TTD_SCS_LSTM\ablacao_skill\src\ttd_scs_lstm\models\models.py", line 520, in forward
+    raise ValueError("LSTM_PET exige pet no forward (gate do train.py deve passar pet)")
+ValueError: LSTM_PET exige pet no forward (gate do train.py deve passar pet)
+  [ERRO] LSTM_PET exige pet no forward (gate do train.py deve passar pet)
+
+====================================================================================================
+  RESUMO - ABLACAO TTD-SCS-LSTM v2
+====================================================================================================
+
+Modelo                      NSE_1h   NSE_3h   NSE_6h  NSE_12h  NSE_24h     Params
+-------------------------------------------------------------------------------------
+lstm_pet                       nan      nan      nan      nan      nan          0
+
+-------------------------------------------------------------------------------------
+ANALISE DE HIPOTESES:
+-------------------------------------------------------------------------------------
+
+[FALHA] 1 modelo(s) com problema:
+   - lstm_pet (erro: LSTM_PET exige pet no forward (gate do train.py deve passar pet))
+======================================================================
+  ABLACAO - TTD-SCS-LSTM v2
+  10 Experimentos de Ablacao
+======================================================================
+
+Device: cuda
+Seed: 44
+Dataset: D:\TTD_SCS_LSTM\ablacao_skill\data\dataset_58585000_telem.h5
+Lookback: 240h (10.0 dias)
+Horizon: 1h
+Epochs: 150
+Batch size: 512
+
+Modelos a executar:
+  - lstm_pet: 
+
+Carregando dados...
+  Train: 27,292 samples
+  Val: 5,998 samples
+  Test: 6,323 samples
+  Ottobacias: 245
+  CN 2022 medio: 64.4
+  Tc Base medio: 10.48h
+  Tc Manning medio: 25.87h
+
+[1/1] lstm_pet
+
+============================================================
+  Modelo: LSTM_PET
+  Parametros: 117,889
+============================================================
+Training LSTM_PET:   0%|          | 0/150 [00:00<?, ?it/s]Training LSTM_PET:   0%|          | 0/150 [00:02<?, ?it/s]
+Traceback (most recent call last):
+  File "D:\TTD_SCS_LSTM\ablacao_skill\scripts\train.py", line 699, in main
+    results = run_experiment(
+        model_type=model_type,
+    ...<6 lines>...
+        verbose=True
+    )
+  File "D:\TTD_SCS_LSTM\ablacao_skill\scripts\train.py", line 518, in run_experiment
+    history, best_val_nse = train_model(
+                            ~~~~~~~~~~~^
+        model, train_loader, val_loader, config, DEVICE, exp_dir, verbose
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\TTD_SCS_LSTM\ablacao_skill\scripts\train.py", line 423, in train_model
+    val_metrics, _, _, _ = evaluate(model, val_loader, device)
+                           ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\TTD_SCS_LSTM\ablacao_skill\scripts\train.py", line 324, in evaluate
+    output = model(precip, hour, month)
+  File "D:\TTD_SCS_LSTM\.venv\Lib\site-packages\torch\nn\modules\module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\TTD_SCS_LSTM\.venv\Lib\site-packages\torch\nn\modules\module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "D:\TTD_SCS_LSTM\ablacao_skill\src\ttd_scs_lstm\models\models.py", line 520, in forward
+    raise ValueError("LSTM_PET exige pet no forward (gate do train.py deve passar pet)")
+ValueError: LSTM_PET exige pet no forward (gate do train.py deve passar pet)
+  [ERRO] LSTM_PET exige pet no forward (gate do train.py deve passar pet)
+
+====================================================================================================
+  RESUMO - ABLACAO TTD-SCS-LSTM v2
+====================================================================================================
+
+Modelo                      NSE_1h   NSE_3h   NSE_6h  NSE_12h  NSE_24h     Params
+-------------------------------------------------------------------------------------
+lstm_pet                       nan      nan      nan      nan      nan          0
+
+-------------------------------------------------------------------------------------
+ANALISE DE HIPOTESES:
+-------------------------------------------------------------------------------------
+
+[FALHA] 1 modelo(s) com problema:
+   - lstm_pet (erro: LSTM_PET exige pet no forward (gate do train.py deve passar pet))
+======================================================================
+  ABLACAO - TTD-SCS-LSTM v2
+  10 Experimentos de Ablacao
+======================================================================
+
+Device: cuda
+Seed: 45
+Dataset: D:\TTD_SCS_LSTM\ablacao_skill\data\dataset_58585000_telem.h5
+Lookback: 240h (10.0 dias)
+Horizon: 1h
+Epochs: 150
+Batch size: 512
+
+Modelos a executar:
+  - lstm_pet: 
+
+Carregando dados...
+  Train: 27,292 samples
+  Val: 5,998 samples
+  Test: 6,323 samples
+  Ottobacias: 245
+  CN 2022 medio: 64.4
+  Tc Base medio: 10.48h
+  Tc Manning medio: 25.87h
+
+[1/1] lstm_pet
+
+============================================================
+  Modelo: LSTM_PET
+  Parametros: 117,889
+============================================================
+Training LSTM_PET:   0%|          | 0/150 [00:00<?, ?it/s]Training LSTM_PET:   0%|          | 0/150 [00:02<?, ?it/s]
+Traceback (most recent call last):
+  File "D:\TTD_SCS_LSTM\ablacao_skill\scripts\train.py", line 699, in main
+    results = run_experiment(
+        model_type=model_type,
+    ...<6 lines>...
+        verbose=True
+    )
+  File "D:\TTD_SCS_LSTM\ablacao_skill\scripts\train.py", line 518, in run_experiment
+    history, best_val_nse = train_model(
+                            ~~~~~~~~~~~^
+        model, train_loader, val_loader, config, DEVICE, exp_dir, verbose
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\TTD_SCS_LSTM\ablacao_skill\scripts\train.py", line 423, in train_model
+    val_metrics, _, _, _ = evaluate(model, val_loader, device)
+                           ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\TTD_SCS_LSTM\ablacao_skill\scripts\train.py", line 324, in evaluate
+    output = model(precip, hour, month)
+  File "D:\TTD_SCS_LSTM\.venv\Lib\site-packages\torch\nn\modules\module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\TTD_SCS_LSTM\.venv\Lib\site-packages\torch\nn\modules\module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "D:\TTD_SCS_LSTM\ablacao_skill\src\ttd_scs_lstm\models\models.py", line 520, in forward
+    raise ValueError("LSTM_PET exige pet no forward (gate do train.py deve passar pet)")
+ValueError: LSTM_PET exige pet no forward (gate do train.py deve passar pet)
+  [ERRO] LSTM_PET exige pet no forward (gate do train.py deve passar pet)
+
+====================================================================================================
+  RESUMO - ABLACAO TTD-SCS-LSTM v2
+====================================================================================================
+
+Modelo                      NSE_1h   NSE_3h   NSE_6h  NSE_12h  NSE_24h     Params
+-------------------------------------------------------------------------------------
+lstm_pet                       nan      nan      nan      nan      nan          0
+
+-------------------------------------------------------------------------------------
+ANALISE DE HIPOTESES:
+-------------------------------------------------------------------------------------
+
+[FALHA] 1 modelo(s) com problema:
+   - lstm_pet (erro: LSTM_PET exige pet no forward (gate do train.py deve passar pet))
+======================================================================
+  ABLACAO - TTD-SCS-LSTM v2
+  10 Experimentos de Ablacao
+======================================================================
+
+Device: cuda
+Seed: 46
+Dataset: D:\TTD_SCS_LSTM\ablacao_skill\data\dataset_58585000_telem.h5
+Lookback: 240h (10.0 dias)
+Horizon: 1h
+Epochs: 150
+Batch size: 512
+
+Modelos a executar:
+  - lstm_pet: 
+
+Carregando dados...
+  Train: 27,292 samples
+  Val: 5,998 samples
+  Test: 6,323 samples
+  Ottobacias: 245
+  CN 2022 medio: 64.4
+  Tc Base medio: 10.48h
+  Tc Manning medio: 25.87h
+
+[1/1] lstm_pet
+
+============================================================
+  Modelo: LSTM_PET
+  Parametros: 117,889
+============================================================
+Training LSTM_PET:   0%|          | 0/150 [00:00<?, ?it/s]Training LSTM_PET:   0%|          | 0/150 [00:02<?, ?it/s]
+Traceback (most recent call last):
+  File "D:\TTD_SCS_LSTM\ablacao_skill\scripts\train.py", line 699, in main
+    results = run_experiment(
+        model_type=model_type,
+    ...<6 lines>...
+        verbose=True
+    )
+  File "D:\TTD_SCS_LSTM\ablacao_skill\scripts\train.py", line 518, in run_experiment
+    history, best_val_nse = train_model(
+                            ~~~~~~~~~~~^
+        model, train_loader, val_loader, config, DEVICE, exp_dir, verbose
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\TTD_SCS_LSTM\ablacao_skill\scripts\train.py", line 423, in train_model
+    val_metrics, _, _, _ = evaluate(model, val_loader, device)
+                           ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\TTD_SCS_LSTM\ablacao_skill\scripts\train.py", line 324, in evaluate
+    output = model(precip, hour, month)
+  File "D:\TTD_SCS_LSTM\.venv\Lib\site-packages\torch\nn\modules\module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\TTD_SCS_LSTM\.venv\Lib\site-packages\torch\nn\modules\module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "D:\TTD_SCS_LSTM\ablacao_skill\src\ttd_scs_lstm\models\models.py", line 520, in forward
+    raise ValueError("LSTM_PET exige pet no forward (gate do train.py deve passar pet)")
+ValueError: LSTM_PET exige pet no forward (gate do train.py deve passar pet)
+  [ERRO] LSTM_PET exige pet no forward (gate do train.py deve passar pet)
+
+====================================================================================================
+  RESUMO - ABLACAO TTD-SCS-LSTM v2
+====================================================================================================
+
+Modelo                      NSE_1h   NSE_3h   NSE_6h  NSE_12h  NSE_24h     Params
+-------------------------------------------------------------------------------------
+lstm_pet                       nan      nan      nan      nan      nan          0
+
+-------------------------------------------------------------------------------------
+ANALISE DE HIPOTESES:
+-------------------------------------------------------------------------------------
+
+[FALHA] 1 modelo(s) com problema:
+   - lstm_pet (erro: LSTM_PET exige pet no forward (gate do train.py deve passar pet))
+======================================================================
+  ABLACAO - TTD-SCS-LSTM v2
+  10 Experimentos de Ablacao
+======================================================================
+
+Device: cuda
+Seed: 47
+Dataset: D:\TTD_SCS_LSTM\ablacao_skill\data\dataset_58585000_telem.h5
+Lookback: 240h (10.0 dias)
+Horizon: 1h
+Epochs: 150
+Batch size: 512
+
+Modelos a executar:
+  - lstm_pet: 
+
+Carregando dados...
+  Train: 27,292 samples
+  Val: 5,998 samples
+  Test: 6,323 samples
+  Ottobacias: 245
+  CN 2022 medio: 64.4
+  Tc Base medio: 10.48h
+  Tc Manning medio: 25.87h
+
+[1/1] lstm_pet
+
+============================================================
+  Modelo: LSTM_PET
+  Parametros: 117,889
+============================================================
+Training LSTM_PET:   0%|          | 0/150 [00:00<?, ?it/s]Training LSTM_PET:   0%|          | 0/150 [00:02<?, ?it/s]
+Traceback (most recent call last):
+  File "D:\TTD_SCS_LSTM\ablacao_skill\scripts\train.py", line 699, in main
+    results = run_experiment(
+        model_type=model_type,
+    ...<6 lines>...
+        verbose=True
+    )
+  File "D:\TTD_SCS_LSTM\ablacao_skill\scripts\train.py", line 518, in run_experiment
+    history, best_val_nse = train_model(
+                            ~~~~~~~~~~~^
+        model, train_loader, val_loader, config, DEVICE, exp_dir, verbose
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\TTD_SCS_LSTM\ablacao_skill\scripts\train.py", line 423, in train_model
+    val_metrics, _, _, _ = evaluate(model, val_loader, device)
+                           ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\TTD_SCS_LSTM\ablacao_skill\scripts\train.py", line 324, in evaluate
+    output = model(precip, hour, month)
+  File "D:\TTD_SCS_LSTM\.venv\Lib\site-packages\torch\nn\modules\module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\TTD_SCS_LSTM\.venv\Lib\site-packages\torch\nn\modules\module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "D:\TTD_SCS_LSTM\ablacao_skill\src\ttd_scs_lstm\models\models.py", line 520, in forward
+    raise ValueError("LSTM_PET exige pet no forward (gate do train.py deve passar pet)")
+ValueError: LSTM_PET exige pet no forward (gate do train.py deve passar pet)
+  [ERRO] LSTM_PET exige pet no forward (gate do train.py deve passar pet)
+
+====================================================================================================
+  RESUMO - ABLACAO TTD-SCS-LSTM v2
+====================================================================================================
+
+Modelo                      NSE_1h   NSE_3h   NSE_6h  NSE_12h  NSE_24h     Params
+-------------------------------------------------------------------------------------
+lstm_pet                       nan      nan      nan      nan      nan          0
+
+-------------------------------------------------------------------------------------
+ANALISE DE HIPOTESES:
+-------------------------------------------------------------------------------------
+
+[FALHA] 1 modelo(s) com problema:
+   - lstm_pet (erro: LSTM_PET exige pet no forward (gate do train.py deve passar pet))
+======================================================================
+  ABLACAO - TTD-SCS-LSTM v2
+  10 Experimentos de Ablacao
+======================================================================
+
+Device: cuda
+Seed: 48
+Dataset: D:\TTD_SCS_LSTM\ablacao_skill\data\dataset_58585000_telem.h5
+Lookback: 240h (10.0 dias)
+Horizon: 1h
+Epochs: 150
+Batch size: 512
+
+Modelos a executar:
+  - lstm_pet: 
+
+Carregando dados...
+  Train: 27,292 samples
+  Val: 5,998 samples
+  Test: 6,323 samples
+  Ottobacias: 245
+  CN 2022 medio: 64.4
+  Tc Base medio: 10.48h
+  Tc Manning medio: 25.87h
+
+[1/1] lstm_pet
+
+============================================================
+  Modelo: LSTM_PET
+  Parametros: 117,889
+============================================================
+Training LSTM_PET:   0%|          | 0/150 [00:00<?, ?it/s]Training LSTM_PET:   0%|          | 0/150 [00:02<?, ?it/s]
+Traceback (most recent call last):
+  File "D:\TTD_SCS_LSTM\ablacao_skill\scripts\train.py", line 699, in main
+    results = run_experiment(
+        model_type=model_type,
+    ...<6 lines>...
+        verbose=True
+    )
+  File "D:\TTD_SCS_LSTM\ablacao_skill\scripts\train.py", line 518, in run_experiment
+    history, best_val_nse = train_model(
+                            ~~~~~~~~~~~^
+        model, train_loader, val_loader, config, DEVICE, exp_dir, verbose
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\TTD_SCS_LSTM\ablacao_skill\scripts\train.py", line 423, in train_model
+    val_metrics, _, _, _ = evaluate(model, val_loader, device)
+                           ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\TTD_SCS_LSTM\ablacao_skill\scripts\train.py", line 324, in evaluate
+    output = model(precip, hour, month)
+  File "D:\TTD_SCS_LSTM\.venv\Lib\site-packages\torch\nn\modules\module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\TTD_SCS_LSTM\.venv\Lib\site-packages\torch\nn\modules\module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "D:\TTD_SCS_LSTM\ablacao_skill\src\ttd_scs_lstm\models\models.py", line 520, in forward
+    raise ValueError("LSTM_PET exige pet no forward (gate do train.py deve passar pet)")
+ValueError: LSTM_PET exige pet no forward (gate do train.py deve passar pet)
+  [ERRO] LSTM_PET exige pet no forward (gate do train.py deve passar pet)
+
+====================================================================================================
+  RESUMO - ABLACAO TTD-SCS-LSTM v2
+====================================================================================================
+
+Modelo                      NSE_1h   NSE_3h   NSE_6h  NSE_12h  NSE_24h     Params
+-------------------------------------------------------------------------------------
+lstm_pet                       nan      nan      nan      nan      nan          0
+
+-------------------------------------------------------------------------------------
+ANALISE DE HIPOTESES:
+-------------------------------------------------------------------------------------
+
+[FALHA] 1 modelo(s) com problema:
+   - lstm_pet (erro: LSTM_PET exige pet no forward (gate do train.py deve passar pet))
+======================================================================
+  ABLACAO - TTD-SCS-LSTM v2
+  10 Experimentos de Ablacao
+======================================================================
+
+Device: cuda
+Seed: 49
+Dataset: D:\TTD_SCS_LSTM\ablacao_skill\data\dataset_58585000_telem.h5
+Lookback: 240h (10.0 dias)
+Horizon: 1h
+Epochs: 150
+Batch size: 512
+
+Modelos a executar:
+  - lstm_pet: 
+
+Carregando dados...
+  Train: 27,292 samples
+  Val: 5,998 samples
+  Test: 6,323 samples
+  Ottobacias: 245
+  CN 2022 medio: 64.4
+  Tc Base medio: 10.48h
+  Tc Manning medio: 25.87h
+
+[1/1] lstm_pet
+
+============================================================
+  Modelo: LSTM_PET
+  Parametros: 117,889
+============================================================
+Training LSTM_PET:   0%|          | 0/150 [00:00<?, ?it/s]Training LSTM_PET:   0%|          | 0/150 [00:02<?, ?it/s]
+Traceback (most recent call last):
+  File "D:\TTD_SCS_LSTM\ablacao_skill\scripts\train.py", line 699, in main
+    results = run_experiment(
+        model_type=model_type,
+    ...<6 lines>...
+        verbose=True
+    )
+  File "D:\TTD_SCS_LSTM\ablacao_skill\scripts\train.py", line 518, in run_experiment
+    history, best_val_nse = train_model(
+                            ~~~~~~~~~~~^
+        model, train_loader, val_loader, config, DEVICE, exp_dir, verbose
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\TTD_SCS_LSTM\ablacao_skill\scripts\train.py", line 423, in train_model
+    val_metrics, _, _, _ = evaluate(model, val_loader, device)
+                           ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\TTD_SCS_LSTM\ablacao_skill\scripts\train.py", line 324, in evaluate
+    output = model(precip, hour, month)
+  File "D:\TTD_SCS_LSTM\.venv\Lib\site-packages\torch\nn\modules\module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\TTD_SCS_LSTM\.venv\Lib\site-packages\torch\nn\modules\module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "D:\TTD_SCS_LSTM\ablacao_skill\src\ttd_scs_lstm\models\models.py", line 520, in forward
+    raise ValueError("LSTM_PET exige pet no forward (gate do train.py deve passar pet)")
+ValueError: LSTM_PET exige pet no forward (gate do train.py deve passar pet)
+  [ERRO] LSTM_PET exige pet no forward (gate do train.py deve passar pet)
+
+====================================================================================================
+  RESUMO - ABLACAO TTD-SCS-LSTM v2
+====================================================================================================
+
+Modelo                      NSE_1h   NSE_3h   NSE_6h  NSE_12h  NSE_24h     Params
+-------------------------------------------------------------------------------------
+lstm_pet                       nan      nan      nan      nan      nan          0
+
+-------------------------------------------------------------------------------------
+ANALISE DE HIPOTESES:
+-------------------------------------------------------------------------------------
+
+[FALHA] 1 modelo(s) com problema:
+   - lstm_pet (erro: LSTM_PET exige pet no forward (gate do train.py deve passar pet))
+======================================================================
+  ABLACAO - TTD-SCS-LSTM v2
+  10 Experimentos de Ablacao
+======================================================================
+
+Device: cuda
+Seed: 50
+Dataset: D:\TTD_SCS_LSTM\ablacao_skill\data\dataset_58585000_telem.h5
+Lookback: 240h (10.0 dias)
+Horizon: 1h
+Epochs: 150
+Batch size: 512
+
+Modelos a executar:
+  - lstm_pet: 
+
+Carregando dados...
+  Train: 27,292 samples
+  Val: 5,998 samples
+  Test: 6,323 samples
+  Ottobacias: 245
+  CN 2022 medio: 64.4
+  Tc Base medio: 10.48h
+  Tc Manning medio: 25.87h
+
+[1/1] lstm_pet
+
+============================================================
+  Modelo: LSTM_PET
+  Parametros: 117,889
+============================================================
+Training LSTM_PET:   0%|          | 0/150 [00:00<?, ?it/s]Training LSTM_PET:   0%|          | 0/150 [00:02<?, ?it/s]
+Traceback (most recent call last):
+  File "D:\TTD_SCS_LSTM\ablacao_skill\scripts\train.py", line 699, in main
+    results = run_experiment(
+        model_type=model_type,
+    ...<6 lines>...
+        verbose=True
+    )
+  File "D:\TTD_SCS_LSTM\ablacao_skill\scripts\train.py", line 518, in run_experiment
+    history, best_val_nse = train_model(
+                            ~~~~~~~~~~~^
+        model, train_loader, val_loader, config, DEVICE, exp_dir, verbose
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\TTD_SCS_LSTM\ablacao_skill\scripts\train.py", line 423, in train_model
+    val_metrics, _, _, _ = evaluate(model, val_loader, device)
+                           ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\TTD_SCS_LSTM\ablacao_skill\scripts\train.py", line 324, in evaluate
+    output = model(precip, hour, month)
+  File "D:\TTD_SCS_LSTM\.venv\Lib\site-packages\torch\nn\modules\module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\TTD_SCS_LSTM\.venv\Lib\site-packages\torch\nn\modules\module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "D:\TTD_SCS_LSTM\ablacao_skill\src\ttd_scs_lstm\models\models.py", line 520, in forward
+    raise ValueError("LSTM_PET exige pet no forward (gate do train.py deve passar pet)")
+ValueError: LSTM_PET exige pet no forward (gate do train.py deve passar pet)
+  [ERRO] LSTM_PET exige pet no forward (gate do train.py deve passar pet)
+
+====================================================================================================
+  RESUMO - ABLACAO TTD-SCS-LSTM v2
+====================================================================================================
+
+Modelo                      NSE_1h   NSE_3h   NSE_6h  NSE_12h  NSE_24h     Params
+-------------------------------------------------------------------------------------
+lstm_pet                       nan      nan      nan      nan      nan          0
+
+-------------------------------------------------------------------------------------
+ANALISE DE HIPOTESES:
+-------------------------------------------------------------------------------------
+
+[FALHA] 1 modelo(s) com problema:
+   - lstm_pet (erro: LSTM_PET exige pet no forward (gate do train.py deve passar pet))
+======================================================================
+  ABLACAO - TTD-SCS-LSTM v2
+  10 Experimentos de Ablacao
+======================================================================
+
+Device: cuda
+Seed: 51
+Dataset: D:\TTD_SCS_LSTM\ablacao_skill\data\dataset_58585000_telem.h5
+Lookback: 240h (10.0 dias)
+Horizon: 1h
+Epochs: 150
+Batch size: 512
+
+Modelos a executar:
+  - lstm_pet: 
+
+Carregando dados...
+  Train: 27,292 samples
+  Val: 5,998 samples
+  Test: 6,323 samples
+  Ottobacias: 245
+  CN 2022 medio: 64.4
+  Tc Base medio: 10.48h
+  Tc Manning medio: 25.87h
+
+[1/1] lstm_pet
+
+============================================================
+  Modelo: LSTM_PET
+  Parametros: 117,889
+============================================================
+Training LSTM_PET:   0%|          | 0/150 [00:00<?, ?it/s]Training LSTM_PET:   0%|          | 0/150 [00:02<?, ?it/s]
+Traceback (most recent call last):
+  File "D:\TTD_SCS_LSTM\ablacao_skill\scripts\train.py", line 699, in main
+    results = run_experiment(
+        model_type=model_type,
+    ...<6 lines>...
+        verbose=True
+    )
+  File "D:\TTD_SCS_LSTM\ablacao_skill\scripts\train.py", line 518, in run_experiment
+    history, best_val_nse = train_model(
+                            ~~~~~~~~~~~^
+        model, train_loader, val_loader, config, DEVICE, exp_dir, verbose
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\TTD_SCS_LSTM\ablacao_skill\scripts\train.py", line 423, in train_model
+    val_metrics, _, _, _ = evaluate(model, val_loader, device)
+                           ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\TTD_SCS_LSTM\ablacao_skill\scripts\train.py", line 324, in evaluate
+    output = model(precip, hour, month)
+  File "D:\TTD_SCS_LSTM\.venv\Lib\site-packages\torch\nn\modules\module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\TTD_SCS_LSTM\.venv\Lib\site-packages\torch\nn\modules\module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "D:\TTD_SCS_LSTM\ablacao_skill\src\ttd_scs_lstm\models\models.py", line 520, in forward
+    raise ValueError("LSTM_PET exige pet no forward (gate do train.py deve passar pet)")
+ValueError: LSTM_PET exige pet no forward (gate do train.py deve passar pet)
+  [ERRO] LSTM_PET exige pet no forward (gate do train.py deve passar pet)
+
+====================================================================================================
+  RESUMO - ABLACAO TTD-SCS-LSTM v2
+====================================================================================================
+
+Modelo                      NSE_1h   NSE_3h   NSE_6h  NSE_12h  NSE_24h     Params
+-------------------------------------------------------------------------------------
+lstm_pet                       nan      nan      nan      nan      nan          0
+
+-------------------------------------------------------------------------------------
+ANALISE DE HIPOTESES:
+-------------------------------------------------------------------------------------
+
+[FALHA] 1 modelo(s) com problema:
+   - lstm_pet (erro: LSTM_PET exige pet no forward (gate do train.py deve passar pet))
+======================================================================
+  GRADE SIMULAÇÃO (janela, horizon=1) | seeds=[42, 43, 44, 45, 46, 47, 48, 49, 50, 51] | epochs=150 pat=25
+======================================================================
+
+>>> seed42 | LSTM_PET (lstm_pet) | 11:10:31
+<<< seed42 | LSTM_PET | FAIL | 0:00:09  [rc=1 | sem results.json]
+
+>>> seed43 | LSTM_PET (lstm_pet) | 11:10:40
+<<< seed43 | LSTM_PET | FAIL | 0:00:09  [rc=1 | sem results.json]
+
+>>> seed44 | LSTM_PET (lstm_pet) | 11:10:50
+<<< seed44 | LSTM_PET | FAIL | 0:00:09  [rc=1 | sem results.json]
+
+>>> seed45 | LSTM_PET (lstm_pet) | 11:10:59
+<<< seed45 | LSTM_PET | FAIL | 0:00:08  [rc=1 | sem results.json]
+
+>>> seed46 | LSTM_PET (lstm_pet) | 11:11:08
+<<< seed46 | LSTM_PET | FAIL | 0:00:09  [rc=1 | sem results.json]
+
+>>> seed47 | LSTM_PET (lstm_pet) | 11:11:17
+<<< seed47 | LSTM_PET | FAIL | 0:00:09  [rc=1 | sem results.json]
+
+>>> seed48 | LSTM_PET (lstm_pet) | 11:11:26
+<<< seed48 | LSTM_PET | FAIL | 0:00:09  [rc=1 | sem results.json]
+
+>>> seed49 | LSTM_PET (lstm_pet) | 11:11:35
+<<< seed49 | LSTM_PET | FAIL | 0:00:09  [rc=1 | sem results.json]
+
+>>> seed50 | LSTM_PET (lstm_pet) | 11:11:44
+<<< seed50 | LSTM_PET | FAIL | 0:00:09  [rc=1 | sem results.json]
+
+>>> seed51 | LSTM_PET (lstm_pet) | 11:11:54
+<<< seed51 | LSTM_PET | FAIL | 0:00:09  [rc=1 | sem results.json]
+
+  FIM | total 0:01:31
+  seed 42 LSTM_PET                       fail 0:00:09
+  seed 43 LSTM_PET                       fail 0:00:09
+  seed 44 LSTM_PET                       fail 0:00:09
+  seed 45 LSTM_PET                       fail 0:00:09
+  seed 46 LSTM_PET                       fail 0:00:09
+  seed 47 LSTM_PET                       fail 0:00:09
+  seed 48 LSTM_PET                       fail 0:00:09
+  seed 49 LSTM_PET                       fail 0:00:09
+  seed 50 LSTM_PET                       fail 0:00:09
+  seed 51 LSTM_PET                       fail 0:00:09
+  0/10 OK

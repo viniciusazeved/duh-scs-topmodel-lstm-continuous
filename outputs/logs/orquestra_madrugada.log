@@ -1,0 +1,5 @@
+2026-06-21 14:10:14 orquestrador iniciado; aguardando grade principal (>=120 .done)
+2026-06-21 23:10:26 grade principal completa -> EXP 1: Manning
+2026-06-22 01:42:53 Manning completo -> EXP 2: sem-DUH (geracao sem roteamento)
+2026-06-22 11:10:31 sem-DUH completo -> EXP 3: PET (forcante evaporativa)
+2026-06-22 11:12:03 PET completo -> FIM da fila da madrugada

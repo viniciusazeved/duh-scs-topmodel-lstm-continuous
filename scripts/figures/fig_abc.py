@@ -64,7 +64,7 @@ def _painel(ax, rows, titulo, vencedor_key, ref_annot=False):
                linewidth=0.4, error_kw=dict(lw=0.6, capsize=2, ecolor="0.45"), zorder=3)
     ax.axhline(GRADE_B_LUMPED, color="0.4", lw=0.7, ls=(0, (4, 2)), zorder=2)
     if ref_annot:
-        ax.annotate("grade lumped LSTM (B)", (n - 0.5, GRADE_B_LUMPED), xytext=(0, 2),
+        ax.annotate("lumped LSTM baseline", (n - 0.5, GRADE_B_LUMPED), xytext=(0, 2),
                     textcoords="offset points", ha="right", va="bottom", fontsize=6.6, color="0.4")
     ax.axhline(0, color="0.5", lw=0.6, zorder=1)
     ax.set_xticks(x)

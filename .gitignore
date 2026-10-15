@@ -13,13 +13,15 @@ Thumbs.db
 .vscode/
 .idea/
 
-# Heavy artifacts archived on Zenodo (NOT in git):
-# per-run model weights (best_model.pt) are large and live on the Zenodo
-# deposit linked in the README. The repository keeps the lightweight
-# results.json, the consolidated tables, and the per-run predictions.npz
-# that are needed to rebuild the figures.
-outputs/**/*.pt
-outputs/**/*.pth
+# Model weights: the checkpoints of the 172 completed runs in outputs/grade_sim are versioned.
+# Partial checkpoints of interrupted runs and the outputs of new runs are not.
+outputs/grade_sim/seed44/Phys_DUH_Topmodel/**/*.pt
+outputs/grade_sim/seed48/Phys_DUH_Topmodel/**/*.pt
+outputs/smoke/
+outputs/retrain/
+outputs/figures/
+outputs/tables/
+*.pth
 
 # Scratch
 *.err
