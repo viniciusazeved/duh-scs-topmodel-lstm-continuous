@@ -1,8 +1,10 @@
 #!/usr/bin/env python
-"""Tabela COMPLETA p/ o artigo: reusa carrega() do consolida_sim e imprime media+-dp por modelo
-de NSE, logNSE, KGE(agregado e decomposto r/alpha/beta), PBIAS, FHV, FLV. So leitura; nao toca GPU.
+"""Quick table (helper): mean and sample sd over seeds of NSE, logNSE, KGE (with r, alpha and beta),
+PBIAS, FHV and FLV per configuration, three decimals, in the order of consolida_sim.ORDEM (rungs 1
+to 12 plus the auxiliary contrasts). Read only, no GPU. The published Table 3 (13 rungs, two
+decimals, seed ensemble) comes from scripts/analysis/table3.py.
 
-Uso: uv run --project D:/TTD_SCS_LSTM python scripts/_tabela_artigo.py   (de ablacao_skill/)
+Usage, from the repository root: uv run python scripts/_tabela_artigo.py
 """
 import sys
 import numpy as np

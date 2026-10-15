@@ -1,27 +1,34 @@
 #!/usr/bin/env python
-"""Runner da grade de SIMULAÇÃO CONTÍNUA por JANELA (abordagem Kratzert/quali, treino dedicado).
+"""Runner of LSTM_PET (potential evapotranspiration as an LSTM input; Supplementary Section S2), for continuous simulation.
 
-Treina cada modelo com horizon=1 (prever o próximo passo a partir do lookback de 240h) e desliza:
-o NSE@1h sobre todas as janelas do test É o NSE de simulação contínua (gerar a série de vazão
-a partir só da chuva, sem usar vazão observada como entrada). Reusa o train.py auditado (com
-horizon=1 a métrica principal vira @1h automaticamente). NÃO é stateful.
+Each configuration is trained with horizon 1 (the next hour from a 240 h lookback) and the
+window slides over the record, so the NSE at 1 h over the test windows is the
+continuous-simulation NSE: streamflow is generated from rainfall alone and observed streamflow
+is never an input. Calls scripts/train.py with --horizon 1. A run gets a .done marker only
+when its results.json holds a finite test NSE, and runs that already have one are skipped, so
+the shipped results in outputs/grade_sim are never retrained in place.
 
-Grade: 12 modelos × seeds, telem. Gate: só grava .done com results.json + test_nse (principal) finito.
-
-Uso:
-  smoke:  python scripts/run_sim.py --test --seeds 42
-  grade:  python scripts/run_sim.py --seeds 42 43 44 45 46 47 48 49 50 51 --epochs 100 --patience 20
+Usage, from the repository root:
+  smoke test (1 epoch, writes to outputs/smoke):
+      python scripts/run_pet.py --test --seeds 42
+  protocol of the manuscript (150 epochs, patience 25, batch 512), into a new folder:
+      python scripts/run_pet.py --seeds 42 43 44 45 46 47 48 49 50 51 --out outputs/retrain
 """
-import argparse, json, subprocess, sys, time
-from pathlib import Path
+import argparse
+import json
+import subprocess
+import sys
+import time
 from datetime import datetime, timedelta
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 TRAIN = ROOT / "scripts" / "train.py"
 DATA = ROOT / "data" / "dataset_58585000_telem.h5"
-OUT = ROOT / "outputs" / "grade_sim"
+OUT = ROOT / "outputs" / "grade_sim"   # shipped results (runs with a .done marker are skipped)
+SMOKE = ROOT / "outputs" / "smoke"     # default output of --test
 
-# (model_type interno, display limpo) — mesma grade de 12 da cadeia "de onde vem o skill"
+# (internal model_type, display name) of the configurations trained by this runner
 MODELS = [
     ("lstm_pet", "LSTM_PET"),
 ]
@@ -35,7 +42,7 @@ def valido(run_dir):
         r = json.loads(cands[0].read_text(encoding="utf-8"))
     except Exception as e:
         return False, f"ilegivel ({e})"
-    v = r.get("test_metrics", {}).get("nse", None)   # métrica principal = @1h (horizon=1) = NSE simulação
+    v = r.get("test_metrics", {}).get("nse", None)   # main metric = @1h (horizon=1) = simulation NSE
     if v is None or not (v == v) or abs(v) == float("inf"):
         return False, f"test NSE nao-finito ({v})"
     return True, f"simNSE={v:.4f}"
@@ -44,26 +51,34 @@ def valido(run_dir):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--seeds", type=int, nargs="+", default=[42])
-    ap.add_argument("--epochs", type=int, default=100)
-    ap.add_argument("--patience", type=int, default=20)
+    ap.add_argument("--epochs", type=int, default=150)
+    ap.add_argument("--patience", type=int, default=25)
     ap.add_argument("--batch-size", type=int, default=512)
-    ap.add_argument("--test", action="store_true")
+    ap.add_argument("--test", action="store_true",
+                    help="smoke test: 1 epoch, written to outputs/smoke unless --out is given")
+    ap.add_argument("--out", default=None,
+                    help="output folder, relative to the repository root "
+                         "(default outputs/grade_sim, or outputs/smoke with --test)")
     a = ap.parse_args()
     if a.test:
         a.epochs, a.patience = 1, 1
-    OUT.mkdir(parents=True, exist_ok=True)
+    out = Path(a.out) if a.out else (SMOKE if a.test else OUT)
+    if not out.is_absolute():
+        out = ROOT / out
+    out.mkdir(parents=True, exist_ok=True)
     summary, tg = [], time.time()
     print("=" * 70)
-    print(f"  GRADE SIMULAÇÃO (janela, horizon=1) | seeds={a.seeds} | epochs={a.epochs} "
+    print(f"  SIMULATION GRID (window, horizon=1) | seeds={a.seeds} | epochs={a.epochs} "
           f"pat={a.patience}{' [TEST]' if a.test else ''}")
     print("=" * 70)
     for seed in a.seeds:
         for mt, disp in MODELS:
-            run_dir = OUT / f"seed{seed}" / disp
+            run_dir = out / f"seed{seed}" / disp
             done = run_dir / ".done"
             if done.exists() and not a.test:
                 print(f"  [SKIP] seed{seed}/{disp}")
-                summary.append((seed, disp, "skip", 0)); continue
+                summary.append((seed, disp, "skip", 0))
+                continue
             run_dir.mkdir(parents=True, exist_ok=True)
             cmd = [sys.executable, str(TRAIN), "--model", mt, "--data-path", str(DATA),
                    "--seed", str(seed), "--output-dir", str(run_dir),

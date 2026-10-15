@@ -1,18 +1,25 @@
 cff-version: 1.2.0
-message: "If you use this software or data, please cite both the article and the archived repository."
+message: "If you use this software or data, please cite the archived version you used (version DOI on Zenodo) and, once published, the accompanying article."
 title: "DUH-SCS-TOPMODEL-LSTM (Continuous Simulation): a differentiable hybrid rainfall-runoff model for hourly continuous streamflow simulation"
 abstract: >-
-  Source code, processed dataset and per-run results for a multi-seed nested-baseline
-  ablation (13 configurations x 10 seeds) evaluating where and how embedded physics helps a
-  differentiable rainfall-runoff model in hourly continuous simulation in the Preto River
-  catchment (Manuel Duarte, ANA 58585000), Brazilian Atlantic Forest.
+  Source code, processed per-sub-catchment datasets, trained model weights, per-run results and
+  analysis scripts supporting the manuscript "Understanding the role of physics in differentiable
+  hydrological models for hourly streamflow prediction", submitted to the Journal of Hydrology
+  (2026). The package reproduces an attribution chain of 13 nested configurations of a
+  differentiable hybrid rainfall-runoff model (distributed unit hydrograph routing, SCS-CN and
+  TOPMODEL runoff generation, LSTM), trained with 10 random seeds (2 for the TOPMODEL physics-only
+  baseline), auxiliary contrasts, preparatory sweeps of network architectures and rainfall products,
+  and a GR4H benchmark, for hourly continuous streamflow simulation in the Preto River catchment
+  upstream of the Manuel Duarte gauge (ANA 58585000, 3,117 km², Brazilian Atlantic Forest). Code
+  under the MIT licence; data and model weights under CC BY 4.0 with the third-party attributions
+  listed in LICENSE-DATA.md.
 type: software
 authors:
   - family-names: Azevedo
-    given-names: Vinicius
+    given-names: Vinícius
     orcid: "https://orcid.org/0009-0009-9008-4095"
     affiliation: "School of Civil Engineering, Architecture and Urban Design (FECFAU), University of Campinas (UNICAMP)"
-    email: contato@azevedoambiental.com
+    email: v260834@dac.unicamp.br
   - family-names: Oliveira
     given-names: Paulo Tarso S.
     orcid: "https://orcid.org/0000-0003-2806-0083"
@@ -22,30 +29,24 @@ authors:
     given-names: Hugo de Oliveira
     orcid: "https://orcid.org/0000-0003-2121-3059"
     affiliation: "School of Civil Engineering, Architecture and Urban Design (FECFAU), University of Campinas (UNICAMP)"
-version: 1.0.0
-doi: 10.5281/zenodo.21016683
+version: 1.1.0
+date-released: "2026-10-15"
+doi: 10.5281/zenodo.21016682
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.21016682
+    description: "Concept DOI (all versions; resolves to the latest)"
+  - type: doi
+    value: 10.5281/zenodo.21016683
+    description: "Version 1.0.0"
 license: MIT
 repository-code: "https://github.com/viniciusazeved/duh-scs-topmodel-lstm-continuous"
 keywords:
-  - hybrid hydrological modeling
-  - differentiable physics
-  - LSTM
   - continuous rainfall-runoff simulation
   - distributed unit hydrograph
-  - multi-seed ablation
-preferred-citation:
-  type: article
-  title: "Where and how does embedded physics help a neural streamflow simulator? A differentiable routing-and-runoff model coupled to an LSTM, tested by multi-seed ablation in continuous simulation"
-  authors:
-    - family-names: Azevedo
-      given-names: Vinicius
-      orcid: "https://orcid.org/0009-0009-9008-4095"
-    - family-names: Oliveira
-      given-names: Paulo Tarso S.
-      orcid: "https://orcid.org/0000-0003-2806-0083"
-    - family-names: Fagundes
-      given-names: Hugo de Oliveira
-      orcid: "https://orcid.org/0000-0003-2121-3059"
-  journal: "Journal of Hydrology"
-  year: 2026
-  notes: "Manuscript in preparation."
+  - LSTM
+  - skill attribution
+  - TOPMODEL
+  - low flows
+  - differentiable hydrological modeling
+  - hybrid hydrological modeling

@@ -1,85 +1,107 @@
 {
-  "created_at": "2026-09-12T20:17:10.657318-03:00",
-  "status": "completed_pending_independent_ratification",
+  "created_at": "2026-10-15T15:46:00.513385-03:00",
+  "status": "completed",
   "versions": {
     "python": "3.13.10",
     "numpy": "2.4.1",
     "pandas": "3.0.0",
     "h5py": "3.15.1"
   },
-  "protocol": "CPU, predições existentes, sem retreino ou recalibração, máscara neural invariável",
+  "protocol": "CPU only; existing GR4H simulations and neural predictions; no retraining or recalibration; the neural evaluation mask is not modified",
   "input_hashes_sha256": {
-    "D:\\Artigo_JOH\\scripts_revisao\\auditar_gr4h_mascara.py": "8c59e003af4aaa02ca59f2e678cdac0fc6c140210b73b0df102e33364abafe84",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\data\\dataset_58585000_telem.h5": "e0024964f97a33a307dc9d051d9205bf6fccb7a42527f49eb03813648dec39bb",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\scripts\\train.py": "731bf42d5224fd9463c1597c719b64ad761db8415bc369afd705261767a0affc",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\scripts\\consolida_sim.py": "d72dec6ddbf6ae43a7acf09cb9c443c1e17ef1e2965635226a458771ac4dca8c",
-    "D:\\TTD_SCS_LSTM\\revisao2_paper1\\run_gr4h_airgr.R": "e992b0e44cdf55a027a8f53879462f29a056810e0733b3d1cf5bc083fb082905",
-    "D:\\TTD_SCS_LSTM\\revisao2_paper1\\run_gr4h_airgr_kge.R": "76022a73c186ab4a0c110f30ec08517053745e6c60f96a5a05c97e2f16901240",
-    "D:\\TTD_SCS_LSTM\\revisao2_paper1\\serie_horaria_gr4h.csv": "ac5a89d193144cd9dec2198810320c09f848469e10d9e5b657d111f9b1f921b0",
-    "D:\\TTD_SCS_LSTM\\revisao2_paper1\\gr4h_sim_teste.csv": "858501401ca068546b4de7cbe6407260f5d96e9d53a8302543c3926aeebdf2d9",
-    "D:\\TTD_SCS_LSTM\\revisao2_paper1\\gr4h_metricas_paper.json": "cb1d8c13e856266fecd9e8a428ba8082ab7fd15dca43d3ed4aff461c1ad83978",
-    "D:\\TTD_SCS_LSTM\\revisao2_paper1\\gr4h_sim_teste_kge.csv": "ba2334cdd81a98f7d05f19f61fd00966abe961ea1206ef1a872c861c3233087d",
-    "D:\\TTD_SCS_LSTM\\revisao2_paper1\\gr4h_metricas_paper_kge.json": "0d1770699de44697bcf00b0223af3cfbe7fcd68884e910fca4ade5c8cf7fb5fd",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed42\\LSTM\\LSTM\\predictions.npz": "90114496bd5fe93518b6df20695bf2ab49049cf2b0a011d821591e9548e477de",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed42\\LSTM\\LSTM\\results.json": "aca601fb56d0f4e6a323cd0f24a87547e9353d8d8ec1f123c82d894c66484557",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed42\\LSTM_Lumped\\LSTM_Lumped\\predictions.npz": "8d4dbbac21a06bb5d14ab0bd85485e4c7c80d7219c9e3aa4788025328f874e00",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed42\\LSTM_Lumped\\LSTM_Lumped\\results.json": "d30b7ed963f16ebb9e2acc7bfb0e8dd373518cff8112a76886e2537a552e89e3",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed42\\LSTM_DUH_Topmodel_PeOnly\\LSTM_DUH_Base_Topmodel_PeOnly\\predictions.npz": "90dbbe565f409edd5ecfbb8883b92d7a53b1ac8c6d16a6376943bdafc290c208",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed42\\LSTM_DUH_Topmodel_PeOnly\\LSTM_DUH_Base_Topmodel_PeOnly\\results.json": "dc5d975512ad7cda7bd16fdc8b5dee8f5fec13af0435c92c4978212599a68f92",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed43\\LSTM\\LSTM\\predictions.npz": "5e032043183af4b34dc17ced13cd9ef55e506919ac6c6f9181cd9220aefc734a",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed43\\LSTM\\LSTM\\results.json": "0d59ee06ff2ec093fc837ee56c087ede1a7c0eb33b9f4799b39e12762f14bcc2",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed43\\LSTM_Lumped\\LSTM_Lumped\\predictions.npz": "a26440274d635a124a546fd88f93dc72304fcf6209df66dbf8955cbedf6be546",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed43\\LSTM_Lumped\\LSTM_Lumped\\results.json": "84943d2ce2091984c94bfaed34c1e17beaa436f809bd7b96793dc6a1a8e77b26",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed43\\LSTM_DUH_Topmodel_PeOnly\\LSTM_DUH_Base_Topmodel_PeOnly\\predictions.npz": "6beaec3a0a0ae5c7a9530b700f5d8e6287c61d725d6a970eebd5c7d7a19a94d3",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed43\\LSTM_DUH_Topmodel_PeOnly\\LSTM_DUH_Base_Topmodel_PeOnly\\results.json": "47ac8e544daea80c3d380404cfe6d3895ecb84ea44c514a6240b9e42451f9634",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed44\\LSTM\\LSTM\\predictions.npz": "b0e7cadc4d44cec00c0fbcb0ea24efbc22fdb9ba25556cf6ccdd09cf29d4ef9f",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed44\\LSTM\\LSTM\\results.json": "a06165cad41356150338753fa33b504a977048b6cd819d5e5c911c626de6e6d1",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed44\\LSTM_Lumped\\LSTM_Lumped\\predictions.npz": "e39c96a117ff85191fd100515af5b94f2dfa858ef4b22e71cac3a5acf09832e5",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed44\\LSTM_Lumped\\LSTM_Lumped\\results.json": "b6dd500f7c10063fcfae7a89c5733bcaca99400b3601bd05c2c14c315bc7e225",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed44\\LSTM_DUH_Topmodel_PeOnly\\LSTM_DUH_Base_Topmodel_PeOnly\\predictions.npz": "31ff03e923f6490f574ed6882d069e17023b0584eb529ce82357653140a78b1f",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed44\\LSTM_DUH_Topmodel_PeOnly\\LSTM_DUH_Base_Topmodel_PeOnly\\results.json": "f41df3425344c1e3cbc3b7d27608aea3187ec17bf28179f38f2566001b1b64d5",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed45\\LSTM\\LSTM\\predictions.npz": "03be87d934a871ba335fae005ed0e1c3179a42431c8b5de176ab0e91ad7973c5",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed45\\LSTM\\LSTM\\results.json": "7da44cc52f33b53a19b593a4240077b7cc7e1542523b20e13d48308fbf6a1bfd",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed45\\LSTM_Lumped\\LSTM_Lumped\\predictions.npz": "1e6667a136c7c9043f66410ba8c2f2be23991351ea78c13ddea5e3ee21a4452e",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed45\\LSTM_Lumped\\LSTM_Lumped\\results.json": "e549c142b921432409e24633c7eeb8e5ac18ceb51b1e195ee52016d7d60b5a98",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed45\\LSTM_DUH_Topmodel_PeOnly\\LSTM_DUH_Base_Topmodel_PeOnly\\predictions.npz": "24c5206af1e2adeac211049f8a86fdd1576477fdbc75cfe2774c4deb2fe1601e",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed45\\LSTM_DUH_Topmodel_PeOnly\\LSTM_DUH_Base_Topmodel_PeOnly\\results.json": "43542b829d57b498ad957ed3a8e99f854903208ec4b00447f1e45ad16afe2bb3",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed46\\LSTM\\LSTM\\predictions.npz": "9b78843e6679b2c90649e1486ebac0c025d792094724024799ad5a7ce9274722",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed46\\LSTM\\LSTM\\results.json": "43589d86c8504309bfaccf510959b687306b582b5bdc12358ec175025015a126",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed46\\LSTM_Lumped\\LSTM_Lumped\\predictions.npz": "b982e9b7359045ed49bc5e78dd0c7e0194863ea0d77c448b2beadc203a1d8a2b",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed46\\LSTM_Lumped\\LSTM_Lumped\\results.json": "31b0cc6247b9b39e920bb55aa2763e831536792258935282a55990f5842273a6",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed46\\LSTM_DUH_Topmodel_PeOnly\\LSTM_DUH_Base_Topmodel_PeOnly\\predictions.npz": "5009b53d4f818613e9ab586b7e6e515c3dcbc7a6fec54dc24a96783ef5e14a62",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed46\\LSTM_DUH_Topmodel_PeOnly\\LSTM_DUH_Base_Topmodel_PeOnly\\results.json": "226ec00b11c4123cb99bc8948b3bd93aa4899ef707dce190cc107a4159bf22ad",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed47\\LSTM\\LSTM\\predictions.npz": "9d285cc1efc65fe6633ddf8fc370192dee844445bddb89568b943c51d2eebf5b",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed47\\LSTM\\LSTM\\results.json": "b70439c83079d481a2277418b86df4958e81c269a50a54e4ba7ba8e654f9c136",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed47\\LSTM_Lumped\\LSTM_Lumped\\predictions.npz": "60f052b6010c9443483f2d7d816e006a2a2e72def2b8c3c0a1c8bf732b62fb5e",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed47\\LSTM_Lumped\\LSTM_Lumped\\results.json": "4405560404c7249a5014ce9cff4cb351409636841ef10b885e5f6c9dbc94911c",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed47\\LSTM_DUH_Topmodel_PeOnly\\LSTM_DUH_Base_Topmodel_PeOnly\\predictions.npz": "bc948ab42dbfd30085a2adc038a67dc2dd78f9ac90501bbe42069c3432d22b8d",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed47\\LSTM_DUH_Topmodel_PeOnly\\LSTM_DUH_Base_Topmodel_PeOnly\\results.json": "3a505c48387c478a309faaf109f502a1e1c040d55074aab9a2b8cc088f012656",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed48\\LSTM\\LSTM\\predictions.npz": "4741605d43e17e412ac75959fad9a9aa2688750a95e528a6b6cf782a72db8d9d",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed48\\LSTM\\LSTM\\results.json": "35202b8ab39e6b636c479811a3d4abc7e200c98793e284444444517dca60b35c",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed48\\LSTM_Lumped\\LSTM_Lumped\\predictions.npz": "c43f01efb50a8c7fa2b84795a64a8d0600fd452bb13cef8804815aa253b074d8",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed48\\LSTM_Lumped\\LSTM_Lumped\\results.json": "aac5de9858a5db40b66a3cb54232f11300122d44fe575f14fa0931febf0baa15",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed48\\LSTM_DUH_Topmodel_PeOnly\\LSTM_DUH_Base_Topmodel_PeOnly\\predictions.npz": "bd23aad221e7d7824f658210d15f4c65bb36ef3fd07a3c068b1c320e46e0ba96",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed48\\LSTM_DUH_Topmodel_PeOnly\\LSTM_DUH_Base_Topmodel_PeOnly\\results.json": "d45d0fe2cd731fe88bb46dee70cf00bba0894e815f1f64e86ad155ef0aa8d373",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed49\\LSTM\\LSTM\\predictions.npz": "f600327c75222530dd8d5ebd3e92ca4fb0590b95022b152a00275362bf4a21f1",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed49\\LSTM\\LSTM\\results.json": "806a1d26b45b3e5e941da19254681f246660aea6a8f88c7dd13657282f08913d",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed49\\LSTM_Lumped\\LSTM_Lumped\\predictions.npz": "4532d7df13000c168229d7a37eca1f03a209c60249a339af61d90d12f1dbe0b7",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed49\\LSTM_Lumped\\LSTM_Lumped\\results.json": "280a1454194e9415c0f1df631d756fc010a646796cad7bbf15b34671ac0340dd",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed49\\LSTM_DUH_Topmodel_PeOnly\\LSTM_DUH_Base_Topmodel_PeOnly\\predictions.npz": "54f09eaf8f05f7fd5eda7c479c0f0615062564efd5fb64b77a2c3f5ab1eaea51",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed49\\LSTM_DUH_Topmodel_PeOnly\\LSTM_DUH_Base_Topmodel_PeOnly\\results.json": "8d2eba0124a0e268933e665b666b48c22d4092f9772719fe182bed10afecb81f",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed50\\LSTM\\LSTM\\predictions.npz": "8bd1b5db39637e08546f769f5da8d780ea83ca7f501e0c9629f60001744ed39b",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed50\\LSTM\\LSTM\\results.json": "779f7ff0b33cdace303399ebb486b1a6a6ed86838cfd67e3ebcfc059824fdeb4",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed50\\LSTM_Lumped\\LSTM_Lumped\\predictions.npz": "9c80b1d0e16cb4d7302b7ee05464fe64812bd9d1344d60b5fd99d9241c1e6fa2",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed50\\LSTM_Lumped\\LSTM_Lumped\\results.json": "fc576d5bf4ec2ae80238946b10e7b932ff8045c87a91a9a78c3820a0d4a078e0",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed50\\LSTM_DUH_Topmodel_PeOnly\\LSTM_DUH_Base_Topmodel_PeOnly\\predictions.npz": "ed3e527f19c8c1ee919f0ba8afc7e6f572680f0fad53715668641c710e9bf379",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed50\\LSTM_DUH_Topmodel_PeOnly\\LSTM_DUH_Base_Topmodel_PeOnly\\results.json": "342285f03cf755bf9101cddb98839337113e6fb428901fd34fcdc8d3df4a3d6f",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed51\\LSTM\\LSTM\\predictions.npz": "e14ff3181e9e3d3a8fef659a4acda875acd548c165d82015b6996552c34dbe9e",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed51\\LSTM\\LSTM\\results.json": "8b911b5ecbd632f423ede3ce8adce631bce779d5e8e0b4cbc464925513065a71",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed51\\LSTM_Lumped\\LSTM_Lumped\\predictions.npz": "435fd667c09d5fc4ee98775bcd8164c1ab7b9a51c9eb7b98c862804a92cba1a3",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed51\\LSTM_Lumped\\LSTM_Lumped\\results.json": "0b65e0586a997fd9ed90748e475756e8b16ec5388c44426da239ea3b699181d9",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed51\\LSTM_DUH_Topmodel_PeOnly\\LSTM_DUH_Base_Topmodel_PeOnly\\predictions.npz": "903afe52e08073e605c0eef134d171bfb27a1ed8e8034ff08459faa8bed43a7c",
-    "D:\\TTD_SCS_LSTM\\ablacao_skill\\outputs\\grade_sim\\seed51\\LSTM_DUH_Topmodel_PeOnly\\LSTM_DUH_Base_Topmodel_PeOnly\\results.json": "6db54e4a709135b453c5b9a98d37b65d4d310a74671194c2c546224607d1e09a"
+    "scripts/gr4h/audit_gr4h_common_mask.py": "2501f0f53c600bb15de57f376ad33b010610437f1e8d5f2d2e4dc9db079c8c9d",
+    "data/dataset_58585000_telem.h5": "e0024964f97a33a307dc9d051d9205bf6fccb7a42527f49eb03813648dec39bb",
+    "scripts/train.py": "3e5f92f17bee95e871e663d8cf06d483162b59ee464a9307615474017aa4bc55",
+    "scripts/consolida_sim.py": "473ba882877bee23f7b687a171e2c56b7926b687445309cb75c18b52c4fc9153",
+    "scripts/gr4h/run_gr4h_airgr.R": "4fafb11cfbed9e47bbc0e0fd40ad7ba7efb46f41d8e9161c2e30bbedb7c97822",
+    "scripts/gr4h/run_gr4h_airgr_kge.R": "d9184c923756a5401d96193e6f8cadf3f910914bf39b675d86110579763cf280",
+    "data/gr4h/serie_horaria_gr4h.csv": "ac5a89d193144cd9dec2198810320c09f848469e10d9e5b657d111f9b1f921b0",
+    "outputs/gr4h/gr4h_sim_teste.csv": "858501401ca068546b4de7cbe6407260f5d96e9d53a8302543c3926aeebdf2d9",
+    "outputs/gr4h/gr4h_parametros.txt": "614e9ed853c546cb5495fae01db0d49eaafb456a8d053b7ced02be2566e76f39",
+    "outputs/gr4h/gr4h_sim_teste_kge.csv": "ba2334cdd81a98f7d05f19f61fd00966abe961ea1206ef1a872c861c3233087d",
+    "outputs/gr4h/gr4h_parametros_kge.txt": "87f378bbae69e904a742311b18a64c1ad67257706a4151c145960c49b3365a34",
+    "outputs/grade_sim/seed42/LSTM/LSTM/predictions.npz": "90114496bd5fe93518b6df20695bf2ab49049cf2b0a011d821591e9548e477de",
+    "outputs/grade_sim/seed42/LSTM/LSTM/results.json": "aca601fb56d0f4e6a323cd0f24a87547e9353d8d8ec1f123c82d894c66484557",
+    "outputs/grade_sim/seed42/LSTM_Lumped/LSTM_Lumped/predictions.npz": "8d4dbbac21a06bb5d14ab0bd85485e4c7c80d7219c9e3aa4788025328f874e00",
+    "outputs/grade_sim/seed42/LSTM_Lumped/LSTM_Lumped/results.json": "d30b7ed963f16ebb9e2acc7bfb0e8dd373518cff8112a76886e2537a552e89e3",
+    "outputs/grade_sim/seed42/LSTM_DUH_Topmodel_PeOnly/LSTM_DUH_Base_Topmodel_PeOnly/predictions.npz": "90dbbe565f409edd5ecfbb8883b92d7a53b1ac8c6d16a6376943bdafc290c208",
+    "outputs/grade_sim/seed42/LSTM_DUH_Topmodel_PeOnly/LSTM_DUH_Base_Topmodel_PeOnly/results.json": "dc5d975512ad7cda7bd16fdc8b5dee8f5fec13af0435c92c4978212599a68f92",
+    "outputs/grade_sim/seed43/LSTM/LSTM/predictions.npz": "5e032043183af4b34dc17ced13cd9ef55e506919ac6c6f9181cd9220aefc734a",
+    "outputs/grade_sim/seed43/LSTM/LSTM/results.json": "0d59ee06ff2ec093fc837ee56c087ede1a7c0eb33b9f4799b39e12762f14bcc2",
+    "outputs/grade_sim/seed43/LSTM_Lumped/LSTM_Lumped/predictions.npz": "a26440274d635a124a546fd88f93dc72304fcf6209df66dbf8955cbedf6be546",
+    "outputs/grade_sim/seed43/LSTM_Lumped/LSTM_Lumped/results.json": "84943d2ce2091984c94bfaed34c1e17beaa436f809bd7b96793dc6a1a8e77b26",
+    "outputs/grade_sim/seed43/LSTM_DUH_Topmodel_PeOnly/LSTM_DUH_Base_Topmodel_PeOnly/predictions.npz": "6beaec3a0a0ae5c7a9530b700f5d8e6287c61d725d6a970eebd5c7d7a19a94d3",
+    "outputs/grade_sim/seed43/LSTM_DUH_Topmodel_PeOnly/LSTM_DUH_Base_Topmodel_PeOnly/results.json": "47ac8e544daea80c3d380404cfe6d3895ecb84ea44c514a6240b9e42451f9634",
+    "outputs/grade_sim/seed44/LSTM/LSTM/predictions.npz": "b0e7cadc4d44cec00c0fbcb0ea24efbc22fdb9ba25556cf6ccdd09cf29d4ef9f",
+    "outputs/grade_sim/seed44/LSTM/LSTM/results.json": "a06165cad41356150338753fa33b504a977048b6cd819d5e5c911c626de6e6d1",
+    "outputs/grade_sim/seed44/LSTM_Lumped/LSTM_Lumped/predictions.npz": "e39c96a117ff85191fd100515af5b94f2dfa858ef4b22e71cac3a5acf09832e5",
+    "outputs/grade_sim/seed44/LSTM_Lumped/LSTM_Lumped/results.json": "b6dd500f7c10063fcfae7a89c5733bcaca99400b3601bd05c2c14c315bc7e225",
+    "outputs/grade_sim/seed44/LSTM_DUH_Topmodel_PeOnly/LSTM_DUH_Base_Topmodel_PeOnly/predictions.npz": "31ff03e923f6490f574ed6882d069e17023b0584eb529ce82357653140a78b1f",
+    "outputs/grade_sim/seed44/LSTM_DUH_Topmodel_PeOnly/LSTM_DUH_Base_Topmodel_PeOnly/results.json": "f41df3425344c1e3cbc3b7d27608aea3187ec17bf28179f38f2566001b1b64d5",
+    "outputs/grade_sim/seed45/LSTM/LSTM/predictions.npz": "03be87d934a871ba335fae005ed0e1c3179a42431c8b5de176ab0e91ad7973c5",
+    "outputs/grade_sim/seed45/LSTM/LSTM/results.json": "7da44cc52f33b53a19b593a4240077b7cc7e1542523b20e13d48308fbf6a1bfd",
+    "outputs/grade_sim/seed45/LSTM_Lumped/LSTM_Lumped/predictions.npz": "1e6667a136c7c9043f66410ba8c2f2be23991351ea78c13ddea5e3ee21a4452e",
+    "outputs/grade_sim/seed45/LSTM_Lumped/LSTM_Lumped/results.json": "e549c142b921432409e24633c7eeb8e5ac18ceb51b1e195ee52016d7d60b5a98",
+    "outputs/grade_sim/seed45/LSTM_DUH_Topmodel_PeOnly/LSTM_DUH_Base_Topmodel_PeOnly/predictions.npz": "24c5206af1e2adeac211049f8a86fdd1576477fdbc75cfe2774c4deb2fe1601e",
+    "outputs/grade_sim/seed45/LSTM_DUH_Topmodel_PeOnly/LSTM_DUH_Base_Topmodel_PeOnly/results.json": "43542b829d57b498ad957ed3a8e99f854903208ec4b00447f1e45ad16afe2bb3",
+    "outputs/grade_sim/seed46/LSTM/LSTM/predictions.npz": "9b78843e6679b2c90649e1486ebac0c025d792094724024799ad5a7ce9274722",
+    "outputs/grade_sim/seed46/LSTM/LSTM/results.json": "43589d86c8504309bfaccf510959b687306b582b5bdc12358ec175025015a126",
+    "outputs/grade_sim/seed46/LSTM_Lumped/LSTM_Lumped/predictions.npz": "b982e9b7359045ed49bc5e78dd0c7e0194863ea0d77c448b2beadc203a1d8a2b",
+    "outputs/grade_sim/seed46/LSTM_Lumped/LSTM_Lumped/results.json": "31b0cc6247b9b39e920bb55aa2763e831536792258935282a55990f5842273a6",
+    "outputs/grade_sim/seed46/LSTM_DUH_Topmodel_PeOnly/LSTM_DUH_Base_Topmodel_PeOnly/predictions.npz": "5009b53d4f818613e9ab586b7e6e515c3dcbc7a6fec54dc24a96783ef5e14a62",
+    "outputs/grade_sim/seed46/LSTM_DUH_Topmodel_PeOnly/LSTM_DUH_Base_Topmodel_PeOnly/results.json": "226ec00b11c4123cb99bc8948b3bd93aa4899ef707dce190cc107a4159bf22ad",
+    "outputs/grade_sim/seed47/LSTM/LSTM/predictions.npz": "9d285cc1efc65fe6633ddf8fc370192dee844445bddb89568b943c51d2eebf5b",
+    "outputs/grade_sim/seed47/LSTM/LSTM/results.json": "b70439c83079d481a2277418b86df4958e81c269a50a54e4ba7ba8e654f9c136",
+    "outputs/grade_sim/seed47/LSTM_Lumped/LSTM_Lumped/predictions.npz": "60f052b6010c9443483f2d7d816e006a2a2e72def2b8c3c0a1c8bf732b62fb5e",
+    "outputs/grade_sim/seed47/LSTM_Lumped/LSTM_Lumped/results.json": "4405560404c7249a5014ce9cff4cb351409636841ef10b885e5f6c9dbc94911c",
+    "outputs/grade_sim/seed47/LSTM_DUH_Topmodel_PeOnly/LSTM_DUH_Base_Topmodel_PeOnly/predictions.npz": "bc948ab42dbfd30085a2adc038a67dc2dd78f9ac90501bbe42069c3432d22b8d",
+    "outputs/grade_sim/seed47/LSTM_DUH_Topmodel_PeOnly/LSTM_DUH_Base_Topmodel_PeOnly/results.json": "3a505c48387c478a309faaf109f502a1e1c040d55074aab9a2b8cc088f012656",
+    "outputs/grade_sim/seed48/LSTM/LSTM/predictions.npz": "4741605d43e17e412ac75959fad9a9aa2688750a95e528a6b6cf782a72db8d9d",
+    "outputs/grade_sim/seed48/LSTM/LSTM/results.json": "35202b8ab39e6b636c479811a3d4abc7e200c98793e284444444517dca60b35c",
+    "outputs/grade_sim/seed48/LSTM_Lumped/LSTM_Lumped/predictions.npz": "c43f01efb50a8c7fa2b84795a64a8d0600fd452bb13cef8804815aa253b074d8",
+    "outputs/grade_sim/seed48/LSTM_Lumped/LSTM_Lumped/results.json": "aac5de9858a5db40b66a3cb54232f11300122d44fe575f14fa0931febf0baa15",
+    "outputs/grade_sim/seed48/LSTM_DUH_Topmodel_PeOnly/LSTM_DUH_Base_Topmodel_PeOnly/predictions.npz": "bd23aad221e7d7824f658210d15f4c65bb36ef3fd07a3c068b1c320e46e0ba96",
+    "outputs/grade_sim/seed48/LSTM_DUH_Topmodel_PeOnly/LSTM_DUH_Base_Topmodel_PeOnly/results.json": "d45d0fe2cd731fe88bb46dee70cf00bba0894e815f1f64e86ad155ef0aa8d373",
+    "outputs/grade_sim/seed49/LSTM/LSTM/predictions.npz": "f600327c75222530dd8d5ebd3e92ca4fb0590b95022b152a00275362bf4a21f1",
+    "outputs/grade_sim/seed49/LSTM/LSTM/results.json": "806a1d26b45b3e5e941da19254681f246660aea6a8f88c7dd13657282f08913d",
+    "outputs/grade_sim/seed49/LSTM_Lumped/LSTM_Lumped/predictions.npz": "4532d7df13000c168229d7a37eca1f03a209c60249a339af61d90d12f1dbe0b7",
+    "outputs/grade_sim/seed49/LSTM_Lumped/LSTM_Lumped/results.json": "280a1454194e9415c0f1df631d756fc010a646796cad7bbf15b34671ac0340dd",
+    "outputs/grade_sim/seed49/LSTM_DUH_Topmodel_PeOnly/LSTM_DUH_Base_Topmodel_PeOnly/predictions.npz": "54f09eaf8f05f7fd5eda7c479c0f0615062564efd5fb64b77a2c3f5ab1eaea51",
+    "outputs/grade_sim/seed49/LSTM_DUH_Topmodel_PeOnly/LSTM_DUH_Base_Topmodel_PeOnly/results.json": "8d2eba0124a0e268933e665b666b48c22d4092f9772719fe182bed10afecb81f",
+    "outputs/grade_sim/seed50/LSTM/LSTM/predictions.npz": "8bd1b5db39637e08546f769f5da8d780ea83ca7f501e0c9629f60001744ed39b",
+    "outputs/grade_sim/seed50/LSTM/LSTM/results.json": "779f7ff0b33cdace303399ebb486b1a6a6ed86838cfd67e3ebcfc059824fdeb4",
+    "outputs/grade_sim/seed50/LSTM_Lumped/LSTM_Lumped/predictions.npz": "9c80b1d0e16cb4d7302b7ee05464fe64812bd9d1344d60b5fd99d9241c1e6fa2",
+    "outputs/grade_sim/seed50/LSTM_Lumped/LSTM_Lumped/results.json": "fc576d5bf4ec2ae80238946b10e7b932ff8045c87a91a9a78c3820a0d4a078e0",
+    "outputs/grade_sim/seed50/LSTM_DUH_Topmodel_PeOnly/LSTM_DUH_Base_Topmodel_PeOnly/predictions.npz": "ed3e527f19c8c1ee919f0ba8afc7e6f572680f0fad53715668641c710e9bf379",
+    "outputs/grade_sim/seed50/LSTM_DUH_Topmodel_PeOnly/LSTM_DUH_Base_Topmodel_PeOnly/results.json": "342285f03cf755bf9101cddb98839337113e6fb428901fd34fcdc8d3df4a3d6f",
+    "outputs/grade_sim/seed51/LSTM/LSTM/predictions.npz": "e14ff3181e9e3d3a8fef659a4acda875acd548c165d82015b6996552c34dbe9e",
+    "outputs/grade_sim/seed51/LSTM/LSTM/results.json": "8b911b5ecbd632f423ede3ce8adce631bce779d5e8e0b4cbc464925513065a71",
+    "outputs/grade_sim/seed51/LSTM_Lumped/LSTM_Lumped/predictions.npz": "435fd667c09d5fc4ee98775bcd8164c1ab7b9a51c9eb7b98c862804a92cba1a3",
+    "outputs/grade_sim/seed51/LSTM_Lumped/LSTM_Lumped/results.json": "0b65e0586a997fd9ed90748e475756e8b16ec5388c44426da239ea3b699181d9",
+    "outputs/grade_sim/seed51/LSTM_DUH_Topmodel_PeOnly/LSTM_DUH_Base_Topmodel_PeOnly/predictions.npz": "903afe52e08073e605c0eef134d171bfb27a1ed8e8034ff08459faa8bed43a7c",
+    "outputs/grade_sim/seed51/LSTM_DUH_Topmodel_PeOnly/LSTM_DUH_Base_Topmodel_PeOnly/results.json": "6db54e4a709135b453c5b9a98d37b65d4d310a74671194c2c546224607d1e09a"
+  },
+  "calibration": {
+    "NSE": {
+      "parameters": {
+        "X1": 4587.57,
+        "X2": 1.25586,
+        "X3": 124.675,
+        "X4": 18.8067
+      },
+      "criterion": "NSE",
+      "criterion_value_4_decimals": 0.7529
+    },
+    "KGE": {
+      "parameters": {
+        "X1": 3240.27,
+        "X2": 1.15413,
+        "X3": 120.969,
+        "X4": 19.3545
+      },
+      "criterion": "KGE",
+      "criterion_value_4_decimals": 0.8541
+    }
   },
   "original_reproduction": {
     "NSE": {
@@ -94,15 +116,6 @@
         "flv": 0.2756108358511737,
         "lognse": 0.460507432094833
       },
-      "delta_against_json": {
-        "nse": 0.0,
-        "kge": 0.0,
-        "lognse": 0.0,
-        "pbias": -4.935785113957536e-11,
-        "flv": 0.0,
-        "fhv": 0.0
-      },
-      "tolerance_absolute": 1e-07,
       "all_csv": {
         "count": 6600,
         "first_utc": "2025-03-31T01:00:00+00:00",
@@ -112,7 +125,8 @@
         "count": 6561,
         "first_utc": "2025-03-31T01:00:00+00:00",
         "last_utc": "2025-12-31T00:00:00+00:00"
-      }
+      },
+      "note": "all finite hours of the GR4H CSV, as first computed before the alignment to the neural mask; superseded by common_metrics"
     },
     "KGE": {
       "unit": "mm/h",
@@ -126,15 +140,6 @@
         "flv": -2.6697808527716753,
         "lognse": 0.44318657036023024
       },
-      "delta_against_json": {
-        "nse": 0.0,
-        "kge": 0.0,
-        "lognse": 0.0,
-        "pbias": -5.917755174777994e-11,
-        "flv": 0.0,
-        "fhv": 0.0
-      },
-      "tolerance_absolute": 1e-07,
       "all_csv": {
         "count": 6600,
         "first_utc": "2025-03-31T01:00:00+00:00",
@@ -144,7 +149,8 @@
         "count": 6561,
         "first_utc": "2025-03-31T01:00:00+00:00",
         "last_utc": "2025-12-31T00:00:00+00:00"
-      }
+      },
+      "note": "all finite hours of the GR4H CSV, as first computed before the alignment to the neural mask; superseded by common_metrics"
     }
   },
   "checks": {
@@ -366,7 +372,7 @@
     "excluded_initial_lookback": 240,
     "rejected_target_nan": 37,
     "rejected_precip_window_nan": 0,
-    "rule": "NaN no target rejeita; NaN em qualquer precipitação da janela de 240 horas rejeita"
+    "rule": "a NaN target rejects the window; a NaN in any precipitation of its 240 input hours rejects it"
   },
   "units": {
     "area_exact_h5_km2": 3117.131901958919,
@@ -376,9 +382,9 @@
     "sensitivity_exact_h5_factor": 865.8699727663663,
     "FLV_original": "mm/h, eps=1e-3",
     "FLV_common": "m3/s, eps=1e-3",
-    "target_tolerance": "abs(delta) <= 0.5e-6*3117/3.6 + 2e-5 m3/s (resolução CSV e float32)",
-    "common_observation": "H5 test streamflow convertido float32, idêntico aos 30 NPZ",
-    "conversion_decision": "Consenso principal e parecer independente: 3117 inverte Qmm usado no R, preservando predições existentes; área H5 exata reescala e fica como sensibilidade"
+    "target_tolerance": "abs(delta) <= 0.5e-6*3117/3.6 + 2e-5 m3/s (CSV resolution and float32)",
+    "common_observation": "test streamflow of the dataset as float32, identical to the target of the 30 NPZ",
+    "conversion_decision": "3117 km2 inverts the Qmm series used by the R scripts and keeps the existing simulations; the exact area of the dataset rescales them and is reported as sensitivity only"
   },
   "common_metrics": {
     "NSE": {
@@ -415,7 +421,7 @@
       },
       "exact_h5_area_sensitivity": {
         "area_km2": 3117.131901958919,
-        "interpretation": "Reescala explícita das predições existentes, não é o resultado principal",
+        "interpretation": "explicit rescaling of the existing simulations, not the main result",
         "metrics": {
           "nse": 0.45451089010939183,
           "kge": 0.4498210328224175,
@@ -462,7 +468,7 @@
       },
       "exact_h5_area_sensitivity": {
         "area_km2": 3117.131901958919,
-        "interpretation": "Reescala explícita das predições existentes, não é o resultado principal",
+        "interpretation": "explicit rescaling of the existing simulations, not the main result",
         "metrics": {
           "nse": 0.48120459848009767,
           "kge": 0.4976663386154345,
@@ -476,5 +482,109 @@
       }
     }
   },
-  "finished_at": "2026-09-12T20:17:10.923704-03:00"
+  "manuscript_comparison": [
+    {
+      "quantity": "scored test hours, count",
+      "manuscript": 6323,
+      "recomputed": 6323,
+      "match": true,
+      "where": "Section 4.6; SI S6"
+    },
+    {
+      "quantity": "scored test hours, first_utc",
+      "manuscript": "2025-04-10T01:00:00+00:00",
+      "recomputed": "2025-04-10T01:00:00+00:00",
+      "match": true,
+      "where": "Section 4.6; SI S6"
+    },
+    {
+      "quantity": "scored test hours, last_utc",
+      "manuscript": "2025-12-31T00:00:00+00:00",
+      "recomputed": "2025-12-31T00:00:00+00:00",
+      "match": true,
+      "where": "Section 4.6; SI S6"
+    },
+    {
+      "quantity": "GR4H NSE calibration, calibration NSE (4 decimals)",
+      "manuscript": "0.75",
+      "recomputed": 0.7529,
+      "recomputed_rounded": "0.75",
+      "decimals": 2,
+      "match": true,
+      "where": "Section 4.6; SI S6"
+    },
+    {
+      "quantity": "GR4H NSE calibration, test NSE",
+      "manuscript": "0.45",
+      "recomputed": 0.45446618658089155,
+      "recomputed_rounded": "0.45",
+      "decimals": 2,
+      "match": true,
+      "where": "Section 4.6; SI S6"
+    },
+    {
+      "quantity": "GR4H NSE calibration, test KGE",
+      "manuscript": "0.45",
+      "recomputed": 0.4497925843115087,
+      "recomputed_rounded": "0.45",
+      "decimals": 2,
+      "match": true,
+      "where": "SI S6"
+    },
+    {
+      "quantity": "GR4H NSE calibration, test FLV",
+      "manuscript": "+0.3",
+      "recomputed": 0.3344303211761489,
+      "recomputed_rounded": "0.3",
+      "decimals": 1,
+      "match": true,
+      "where": "SI S6, %"
+    },
+    {
+      "quantity": "GR4H NSE calibration, test FHV",
+      "manuscript": "-42.3",
+      "recomputed": -42.305329547246004,
+      "recomputed_rounded": "-42.3",
+      "decimals": 1,
+      "match": true,
+      "where": "SI S6, %"
+    },
+    {
+      "quantity": "GR4H KGE calibration, test NSE",
+      "manuscript": "0.48",
+      "recomputed": 0.48115051487696625,
+      "recomputed_rounded": "0.48",
+      "decimals": 2,
+      "match": true,
+      "where": "Section 4.6; SI S6"
+    },
+    {
+      "quantity": "GR4H KGE calibration, test KGE",
+      "manuscript": "0.50",
+      "recomputed": 0.4976330906163393,
+      "recomputed_rounded": "0.50",
+      "decimals": 2,
+      "match": true,
+      "where": "SI S6"
+    },
+    {
+      "quantity": "GR4H KGE calibration, test FLV",
+      "manuscript": "-3.1",
+      "recomputed": -3.0664002742998524,
+      "recomputed_rounded": "-3.1",
+      "decimals": 1,
+      "match": true,
+      "where": "SI S6, %"
+    },
+    {
+      "quantity": "GR4H KGE calibration, test FHV",
+      "manuscript": "-40.1",
+      "recomputed": -40.132408910216704,
+      "recomputed_rounded": "-40.1",
+      "decimals": 1,
+      "match": true,
+      "where": "SI S6, %"
+    }
+  ],
+  "finished_at": "2026-10-15T15:46:00.879056-03:00"
 }

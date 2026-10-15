@@ -6,7 +6,13 @@ O teste mais limpo do efeito da feature de calendário. Entrada por timestep:
 Chuva agregada = média areal (ponderada por área) das 245 ottobacias.
 Lookback 240h, prevê 24h. Reporta NSE por horizonte, média de N seeds.
 
-Uso: uv run python src/lumped_lstm.py --seeds 5
+Usage in this package, from the repository root. Supplementary Tables S5 and S6 (continuous
+simulation: horizon 1, lookback 240 h, batch 512, seeds 0 to 4, forcing files in data/):
+  uv run python scripts/abc/lumped_lstm.py --H 1 --L 240 --seeds 5 --batch 512 --backbones lstm,gru,transformer,mlp,dlinear --produtos telem
+  uv run python scripts/abc/lumped_lstm.py --H 1 --L 240 --seeds 5 --batch 512 --backbones lstm --produtos telem,merge,era5land,imerg
+Add mswep to --produtos if dataset_58585000_mswep.h5 was rebuilt locally (it is not redistributed).
+The defaults (horizon 24, batch 1024) belong to the forecasting study. On an RTX 2000 Ada with the
+frozen environment the per-seed values repeat those of outputs/abc/*_gpu1.log to four decimals.
 """
 
 from __future__ import annotations
@@ -33,7 +39,7 @@ import torch.nn as nn
 
 from backbones import make_backbone, n_params
 
-DATA = Path(__file__).resolve().parent.parent / "data"
+DATA = Path(__file__).resolve().parents[2] / "data"   # repository data/ folder
 L, H = 240, 24
 
 

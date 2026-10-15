@@ -1,29 +1,48 @@
 #!/usr/bin/env python
-"""Figura do experimento ABC (simulacao continua, h=1): dois paineis A/B/C.
+"""Supplementary Figure S1: the lumped ABC sweeps in continuous simulation (horizon 1 h).
 
-  (a) arquitetura x A/B/C  (produto = telemetrico)  -> arquitetura secundaria (topo comprime)
-  (b) produto    x A/B/C   (arquitetura = LSTM)      -> telem e o teto, produtos de grade perdem
+Mean test NSE (bars) and population standard deviation across the 5 seeds (error bars) in modes A
+(rainfall only), C (calendar only) and B (rainfall plus calendar, coupled):
 
-Os dois paineis se cruzam no campeao compartilhado (LSTM x telemetrico), teto de ambos,
-destacado com estrela. Le os MESMOS logs do tabela_abc.py (mesma fonte das Tabelas 3 e 4).
-Estilo Elsevier identico ao gerar_figuras_sim.py.
+  (a) architectures with the telemetric forcing (``outputs/abc/backbones_telem_gpu1.log``);
+  (b) rainfall products with the LSTM (``outputs/abc/products_lstm_gpu1.log``).
 
-Saida: D:/Artigo_JOH/artigo_simulacao/figuras/fig_abc.{png,pdf}
-Rodar: uv run --project D:/TTD_SCS_LSTM python scripts/fig_abc.py
+The two panels meet at the configuration they share (LSTM with the telemetric forcing), marked
+with a star. The dashed line is the mean test NSE of the coupled lumped LSTM of the decisive grid
+(rung 3, LSTM_Lumped, 10 seeds). The bars use the three-decimal summaries that ``lumped_lstm.py``
+printed in the logs, read by ``tabela_abc.parse``; ``tabela_abc.py`` recomputes Tables S5 and S6
+from the per-seed values of the same logs.
+
+Output: ``outputs/figures/fig_abc.png`` (300 dpi; the file the manuscript includes) and
+``fig_abc.pdf``. With the environment of the runs (Python 3.13.10, matplotlib 3.10.8, numpy
+2.4.1, Pillow 12.1.0) and the Times New Roman font, the PNG is byte-identical to the submitted one.
+
+Origin: ``fig_abc.py`` of the authors' working folder (4 September 2026; SHA-256
+85e9da09a521dcc851d125daaa526c5b9914152ba60d382ad066160b058fcaf6), the generator of the submitted
+figure. Changes for this repository, none of which alters the figure: paths relative to the
+repository, with the output folder created in ``main()``; argparse; type hints; comments and
+console messages in English.
+
+Usage, from the repository root:
+    python scripts/figures/fig_abc.py [--out DIR]
 """
+
 from __future__ import annotations
+
+import argparse
 import sys
 from pathlib import Path
 
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
+from matplotlib.axes import Axes
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-import tabela_abc as T   # parse, LOGS_ARCH, LOG_PROD, BB_LABEL, PROD_LABEL
+import tabela_abc as T  # noqa: E402  (parse, LOGS_ARCH, LOG_PROD, BB_LABEL, PROD_LABEL)
 
-OUT = Path(r"D:\Artigo_JOH\artigo_simulacao\figuras")
-OUT.mkdir(parents=True, exist_ok=True)
+ROOT = Path(__file__).resolve().parents[2]
+OUT = ROOT / "outputs" / "figures"
 
 mpl.rcParams.update({
     "font.family": "serif",
@@ -36,12 +55,17 @@ mpl.rcParams.update({
     "legend.fontsize": 8, "legend.frameon": False,
     "savefig.dpi": 300, "savefig.bbox": "tight", "savefig.pad_inches": 0.05,
 })
-COR = {"A": "#e08214", "C": "#8073ac", "B": "#2166ac"}   # rain / calendar / coupled
-GRADE_B_LUMPED = 0.665   # LSTM_Lumped da grade (10 seeds), referencia de sanidade
+COR = {"A": "#e08214", "C": "#8073ac", "B": "#2166ac"}   # rainfall / calendar / coupled
+# Mean test NSE of rung 3 (LSTM_Lumped) of the decisive grid over seeds 42 to 51, from the
+# results.json files in outputs/grade_sim: unrounded 0.66502, drawn at three decimals.
+GRADE_B_LUMPED = 0.665
+
+Row = tuple[str, str, dict[str, tuple[float, float]]]   # (label, key, {mode: (mean, sd)})
 
 
-def _coletar(data, fixar_key, fixar_val, varia_idx, label_map):
-    """[(label, key, {A,C,B:(mu,sd)})] ordenado por B desc; so itens que ja tem B."""
+def _coletar(data: dict[tuple[str, str], dict[str, tuple[float, float]]], fixar_key: int,
+             fixar_val: str, varia_idx: int, label_map: dict[str, str]) -> list[Row]:
+    """Rows of one panel, sorted by decreasing mode-B mean; only items that have mode B."""
     rows = []
     for chave, d in data.items():
         if chave[fixar_key] != fixar_val or "B" not in d:
@@ -52,7 +76,9 @@ def _coletar(data, fixar_key, fixar_val, varia_idx, label_map):
     return rows
 
 
-def _painel(ax, rows, titulo, vencedor_key, ref_annot=False):
+def _painel(ax: Axes, rows: list[Row], titulo: str, vencedor_key: str,
+            ref_annot: bool = False) -> None:
+    """Grouped bars (modes A, C, B) of one panel, with the grid reference and the star."""
     n = len(rows)
     x = np.arange(n)
     w = 0.27
@@ -78,7 +104,14 @@ def _painel(ax, rows, titulo, vencedor_key, ref_annot=False):
     ax.set_title(titulo, fontsize=9)
 
 
-def main():
+def main(argv: list[str] | None = None) -> None:
+    parser = argparse.ArgumentParser(description="Supplementary Figure S1 (lumped ABC sweeps).")
+    parser.add_argument("--out", type=Path, default=OUT,
+                        help="output folder (default: outputs/figures)")
+    args = parser.parse_args(argv)
+    out = args.out
+    out.mkdir(parents=True, exist_ok=True)
+
     arch = {}
     for lg in T.LOGS_ARCH:
         arch.update(T.parse(lg))
@@ -87,19 +120,29 @@ def main():
     rows_a = _coletar(arch, 0, "telem", 1, T.BB_LABEL)
     rows_b = _coletar(prod, 1, "lstm", 0, T.PROD_LABEL)
     if not rows_a or not rows_b:
-        print(f"[warn] dados parciais: arch={len(rows_a)} prod={len(rows_b)} (gerando mesmo assim)")
+        print(f"[warn] partial data: {len(rows_a)} architectures, {len(rows_b)} products "
+              "(drawing anyway)")
 
     fig, (axa, axb) = plt.subplots(1, 2, figsize=(7.2, 3.6), sharey=True)
     _painel(axa, rows_a, "(a) Architecture  (telemetric)", "lstm", ref_annot=True)
     _painel(axb, rows_b, "(b) Rainfall product  (LSTM)", "telem", ref_annot=False)
     axa.set_ylabel("NSE (1 h simulation)")
-    h, l = axa.get_legend_handles_labels()
-    fig.legend(h, l, loc="upper center", ncol=3, bbox_to_anchor=(0.5, 1.04), fontsize=8, frameon=False)
+    handles, labels = axa.get_legend_handles_labels()
+    fig.legend(handles, labels, loc="upper center", ncol=3, bbox_to_anchor=(0.5, 1.04), fontsize=8,
+               frameon=False)
     fig.tight_layout(rect=(0, 0, 1, 0.95))
     for ext in ("png", "pdf"):
-        fig.savefig(OUT / f"fig_abc.{ext}")
+        fig.savefig(out / f"fig_abc.{ext}")
     plt.close(fig)
-    print(f"[OK] fig_abc  (a: {len(rows_a)} arquiteturas, b: {len(rows_b)} produtos)")
+    print(f"[OK] fig_abc (.png, .pdf): (a) {len(rows_a)} architectures, (b) {len(rows_b)} products")
+    print("Bars as drawn: three-decimal summaries of the logs, mean +/- population sd "
+          "(two-decimal tables: tabela_abc.py)")
+    for panel, rows in (("(a)", rows_a), ("(b)", rows_b)):
+        for lab, _, d in rows:
+            cells = "  ".join(f"{m}: {d[m][0]:+.3f} +/- {d[m][1]:.3f}"
+                              for m in ("A", "C", "B") if m in d)
+            print(f"  {panel} {lab:<20} {cells}")
+    print(f"  dashed line (rung 3, LSTM_Lumped, 10 seeds): {GRADE_B_LUMPED:.3f}")
 
 
 if __name__ == "__main__":

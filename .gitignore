@@ -21,6 +21,8 @@ outputs/smoke/
 outputs/retrain/
 outputs/figures/
 outputs/tables/
+# Public GIS layers of Figure 1, downloaded by the user (data/gis/README.md)
+data/gis/external/
 *.pth
 
 # Scratch

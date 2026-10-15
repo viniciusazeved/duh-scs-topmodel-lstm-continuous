@@ -1,11 +1,14 @@
 #!/usr/bin/env python
-"""Consolida a grade de SIMULAÇÃO CONTÍNUA por janela (outputs/grade_sim, formato train.py).
+"""Quick consolidation of the continuous-simulation grid (outputs/grade_sim, train.py format). Helper.
 
-Lê test_metrics.nse (= NSE@1h = NSE de simulação) e predictions.npz (pred/target shape (N,1)) de cada
-modelo. Monta a cadeia "de onde vem o skill", contrastes pareados (Wilcoxon por seed) e assinaturas do
-hidrograma (logNSE, KGE decomposto r/alpha/beta, PBIAS, FHV picos, FLV baixas).
+Reads test_metrics.nse (NSE at 1 h, the continuous-simulation NSE) and predictions.npz (pred and
+target, shape (N, 1)) of every run, and prints the attribution chain, seed-paired Wilcoxon contrasts
+and hydrograph signatures (logNSE, KGE with its r, alpha and beta terms, PBIAS, FHV, FLV).
+It tests every contrast one-sided (alternative "greater") and its chain (ORDEM) omits rung 13
+(Phys_DUH_Topmodel). The p-values of the manuscript, with the tails stated in the text, come from
+scripts/analysis/contrasts.py, and Table 3 from scripts/analysis/table3.py.
 
-Uso: uv run --project D:/TTD_SCS_LSTM python scripts/consolida_sim.py
+Usage, from the repository root: uv run python scripts/consolida_sim.py
 """
 import argparse, json, sys
 from pathlib import Path
@@ -112,13 +115,13 @@ def main():
     por = carrega()
     if not por:
         print(f"[vazio] {GRADE}"); return 1
-    print(f"\n{'='*80}\n  CADEIA DO SKILL — simulação contínua por janela (test, média±dp; n seeds)\n{'='*80}")
+    print(f"\n{'='*80}\n  CADEIA DO SKILL: simulação contínua por janela (test, média±dp; n seeds)\n{'='*80}")
     print(f"  {'modelo':<30}{'NSE':>8}{'KGE':>8}{'logNSE':>9}{'FHV%':>8}{'FLV%':>8}{'n':>4}")
     print("  " + "-" * 74)
     med = {}
     for disp in ORDEM:
         if disp not in por:
-            print(f"  {disp:<30}{'—':>8}"); continue
+            print(f"  {disp:<30}{'n/a':>8}"); continue
         rows = list(por[disp].values())
         def col(k):
             xs = [x[k] for x in rows if k in x and np.isfinite(x[k])]

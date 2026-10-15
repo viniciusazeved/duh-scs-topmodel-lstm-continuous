@@ -1,0 +1,35 @@
+{
+  "upload_type": "software",
+  "title": "DUH-SCS-TOPMODEL-LSTM (Continuous Simulation): a differentiable hybrid rainfall-runoff model for hourly continuous streamflow simulation",
+  "version": "1.1.0",
+  "description": "Source code, processed per-sub-catchment datasets, trained model weights, per-run results and analysis scripts supporting the manuscript \"Understanding the role of physics in differentiable hydrological models for hourly streamflow prediction\", submitted to the Journal of Hydrology (2026). The package reproduces an attribution chain of 13 nested configurations of a differentiable hybrid rainfall-runoff model (distributed unit hydrograph routing, SCS-CN and TOPMODEL runoff generation, LSTM), trained with 10 random seeds (2 for the TOPMODEL physics-only baseline), auxiliary contrasts, preparatory sweeps of network architectures and rainfall products, and a GR4H benchmark, for hourly continuous streamflow simulation in the Preto River catchment upstream of the Manuel Duarte gauge (ANA 58585000, 3,117 km², Brazilian Atlantic Forest). Code under the MIT licence; data and model weights under CC BY 4.0 with the third-party attributions listed in LICENSE-DATA.md.",
+  "creators": [
+    {
+      "name": "Azevedo, Vinícius",
+      "affiliation": "School of Civil Engineering, Architecture and Urban Design (FECFAU), University of Campinas (UNICAMP)",
+      "orcid": "0009-0009-9008-4095"
+    },
+    {
+      "name": "Oliveira, Paulo Tarso S.",
+      "affiliation": "Department of Civil and Environmental Engineering, University of North Carolina at Charlotte",
+      "orcid": "0000-0003-2806-0083"
+    },
+    {
+      "name": "Fagundes, Hugo de Oliveira",
+      "affiliation": "School of Civil Engineering, Architecture and Urban Design (FECFAU), University of Campinas (UNICAMP)",
+      "orcid": "0000-0003-2121-3059"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "continuous rainfall-runoff simulation",
+    "distributed unit hydrograph",
+    "LSTM",
+    "skill attribution",
+    "TOPMODEL",
+    "low flows",
+    "differentiable hydrological modeling",
+    "hybrid hydrological modeling"
+  ],
+  "notes": "If you use this software or data, please cite the archived version you used (version DOI on Zenodo) and, once published, the accompanying article."
+}
